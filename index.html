@@ -1,1 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bruno Brovou — Portfolio Data Analyst</title>
+  <style>
+    :root{
+      --navy:#0B1F3B; --blue:#2F6FED; --blueSoft:#E8F0FF;
+      --bg:#F6F8FB; --card:#FFFFFF; --border:#E6EAF0;
+      --text:#111827; --muted:#6B7280;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);}
+    .container{max-width:1040px;margin:0 auto;padding:28px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
+    .shadow{box-shadow:0 8px 20px rgba(16,24,40,.06);}
+    h1{margin:0;color:var(--navy);font-size:28px;letter-spacing:-.2px}
+    h2{margin:0 0 10px;color:var(--navy);font-size:18px}
+    p{margin:8px 0;color:var(--muted);line-height:1.5}
+    .top{display:flex;gap:18px;align-items:flex-start;justify-content:space-between}
+    .tagline{margin-top:6px}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+    a.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);
+      text-decoration:none;color:var(--navy);background:#fff;font-weight:600;font-size:14px}
+    a.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+    a.btn:hover{filter:brightness(.98)}
+    .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:999px;background:var(--blueSoft);color:var(--navy);
+      border:1px solid #D6E4FF;font-weight:600;font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    @media(max-width:860px){.grid{grid-template-columns:1fr}.top{flex-direction:column}.btns{justify-content:flex-start}}
+    ul{margin:8px 0 0 18px;color:var(--text)}
+    li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .section{margin-top:14px}
+    .small{font-size:13px;color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:14px 0}
+    .badgeLink a{color:var(--blue);text-decoration:none;font-weight:600}
+    .badgeLink a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="container">
 
+    <!-- HERO -->
+    <div class="card shadow">
+      <div class="top">
+        <div>
+          <h1>Bruno Brovou — Data Analyst confirmé</h1>
+          <p class="tagline">Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)</p>
+          <div class="kpis">
+            <span class="chip">13 projets IT/Data</span>
+            <span class="chip">26 compétences (1–5)</span>
+            <span class="chip">20 sujets suivis</span>
+            <span class="chip">14 priorisés “Go”</span>
+            <span class="chip">2915 min retards</span>
+          </div>
+        </div>
+
+        <div class="btns">
+          <a class="btn primary" href="LIEN_POWER_BI_LECTURE" target="_blank" rel="noopener">Dashboards Power BI</a>
+          <a class="btn" href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo (MP4)</a>
+          <a class="btn" href="Documentation.pdf" target="_blank" rel="noopener">Documentation (PDF)</a>
+          <a class="btn" href="CV_Bruno_Brovou_Data_Analyst_confirme_v1.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a class="btn" href="https://github.com/brovou" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARDS + LIVRABLES -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Dashboards</h2>
+        <ul>
+          <li><b>Profil</b> : compétences (1–5), projets, preuves</li>
+          <li><b>Veille</b> : Go/Tester + insights maintenance (Top ATA, immobilisation, retards)</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="badgeLink">
+          <a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Télécharger le PBIX dashboards</a>
+        </div>
+        <p class="small">Objectif : lecture recruteur & preuve de compétences avant entretien.</p>
+      </div>
+
+      <div class="card shadow">
+        <h2>Livrables (projet portfolio)</h2>
+        <ul class="badgeLink">
+          <li><a href="Carte mentale.pdf" target="_blank">Carte mentale</a></li>
+          <li><a href="Analyse des besoins métiers.pdf" target="_blank">Analyse des besoins métiers</a></li>
+          <li><a href="Cahier des charges fonctionnel.pdf" target="_blank">Cahier des charges fonctionnel</a></li>
+          <li><a href="Diagramme de Gantt.pbix" target="_blank">Gantt (PBIX)</a></li>
+          <li><a href="Mock-up 1&2 — Dashboord Profil & Veille.pdf" target="_blank">Mock-ups (PDF)</a></li>
+        </ul>
+        <p class="small">Livrables de cadrage → planification → UX → réalisation → transfert.</p>
+      </div>
+    </div>
+
+    <!-- DEMANDE CLIENT + METHODOLOGIE -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Demande du client (Aéroworld)</h2>
+        <ul>
+          <li>Évaluer le candidat <b>avant entretien</b> via un portfolio vérifiable</li>
+          <li>Démontrer un profil <b>Data Analyst confirmé</b> (KPI, qualité, dataviz)</li>
+          <li>Montrer une posture <b>consultant</b> : méthodologie, preuves, transfert</li>
+        </ul>
+      </div>
+
+      <div class="card shadow">
+        <h2>Méthodologie (8 étapes)</h2>
+        <ol class="small">
+          <li>Carte mentale → structure & navigation</li>
+          <li>Analyse besoin métier → problématique + KPI</li>
+          <li>Cahier des charges → users + critères d’acceptation</li>
+          <li>Gantt → planification 14 jours</li>
+          <li>Mock-ups → UX avant construction</li>
+          <li>Dashboards Power BI → Profil + Veille</li>
+          <li>Transfert → vidéo + documentation</li>
+          <li>Publication → GitHub Pages</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ETUDES DE CAS + DIFFICULTES -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Études de cas</h2>
+        <ul>
+          <li><b>Aéroworld (Power BI)</b> : cadrage → KPI → dashboards → recommandations → documentation</li>
+          <li><b>P12 — Faux billets (ML)</b> : data prep → classification → métriques → recommandation d’usage</li>
+        </ul>
+        <p class="small">En entretien : je présente 3 projets maximum en format STAR (Situation–Tâche–Actions–Résultats).</p>
+      </div>
+
+      <div class="card shadow">
+        <h2>Difficultés rencontrées & solutions</h2>
+        <ul>
+          <li><b>Types & décimaux</b> (Power Query) → Trim/Clean + “type avec paramètres régionaux”</li>
+          <li><b>Lisibilité</b> → mock-ups + hiérarchie visuelle + navigation simple</li>
+          <li><b>Définitions KPI</b> → dictionnaire KPI + documentation pour cohérence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOFT SKILLS -->
+    <div class="card shadow section">
+      <h2>Soft skills (preuves)</h2>
+      <ul>
+        <li><b>Rigueur</b> : règles qualité, cohérence KPI, contrôles Power Query</li>
+        <li><b>Esprit de synthèse</b> : KPI + recommandations Go/Tester</li>
+        <li><b>Communication</b> : vidéo de formation + documentation PDF</li>
+        <li><b>Pilotage</b> : cahier des charges + Gantt + jalons</li>
+        <li><b>Orientation client</b> : livrables vérifiables et utilisables avant entretien</li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="card shadow section">
+      <h2>Contact</h2>
+      <ul class="small">
+        <li>Email : <b>j.b.brovou@gmail.com</b></li>
+        <li>LinkedIn : <a href="LIEN_LINKEDIN" target="_blank" rel="noopener">à renseigner</a></li>
+      </ul>
+      <p class="small">© Bruno Brovou — Portfolio Data (GitHub Pages)</p>
+    </div>
+
+  </div>
+</body>
+</html>
