@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bruno Brovou — Portfolio Data Analyst</title>
+  <title>Bruno Brovou — Portfolio Data Analyst confirmé</title>
 
   <style>
     :root{
@@ -18,50 +18,37 @@
       --radius:16px;
     }
     *{box-sizing:border-box}
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      margin:0; background:var(--bg); color:var(--text);
-    }
-    .container{max-width:1040px;margin:0 auto;padding:28px;}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);}
+    .container{max-width:1100px;margin:0 auto;padding:28px;}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
     .shadow{box-shadow:0 8px 20px rgba(16,24,40,.06);}
     .section{margin-top:14px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
-    @media(max-width:860px){.grid{grid-template-columns:1fr}}
+    .grid{display:grid;grid-template-columns:1.7fr .9fr;gap:14px;margin-top:14px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
     h1{margin:0;color:var(--navy);font-size:28px;letter-spacing:-.2px}
     h2{margin:0 0 10px;color:var(--navy);font-size:18px}
-    p{margin:8px 0;color:var(--muted);line-height:1.55}
-    ul{margin:8px 0 0 18px;color:var(--text)}
+    h3{margin:12px 0 6px;color:var(--navy);font-size:15px}
+    p{margin:8px 0;color:var(--muted);line-height:1.6}
+    ul{margin:8px 0 0 18px}
     li{margin:6px 0}
     .small{font-size:13px;color:var(--muted)}
     .divider{height:1px;background:var(--border);margin:14px 0}
+    .hero{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .heroLeft{display:flex;gap:14px;align-items:center}
+    .avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;border:1px solid var(--border);background:#fff}
     .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
-    .btns a{
-      display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;
-      border:1px solid var(--border);text-decoration:none;color:var(--navy);background:#fff;
-      font-weight:700;font-size:14px;
-    }
+    .btns a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);
+      text-decoration:none;color:var(--navy);background:#fff;font-weight:800;font-size:14px}
     .btns a.primary{background:var(--blue);border-color:var(--blue);color:#fff}
     .btns a:hover{filter:brightness(.98)}
-    .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .chip{
-      display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:999px;
-      background:var(--blueSoft);color:var(--navy);border:1px solid #D6E4FF;
-      font-weight:800;font-size:13px
-    }
-    .heroTop{display:flex;gap:18px;align-items:flex-start;justify-content:space-between}
-    .heroLeft{display:flex;gap:14px;align-items:center}
-    .avatar{
-      width:78px;height:78px;border-radius:50%;object-fit:cover;
-      border:1px solid var(--border); background:#fff;
-    }
-    .tagline{margin-top:6px}
-    .linkList a{color:var(--blue);text-decoration:none;font-weight:700}
-    .linkList a:hover{text-decoration:underline}
-    .note{
-      padding:12px;border-radius:12px;border:1px dashed #C7D2FE;background:#F4F7FF;color:var(--navy);
-      font-weight:700;font-size:13px
-    }
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:999px;background:var(--blueSoft);
+      color:var(--navy);border:1px solid #D6E4FF;font-weight:900;font-size:13px}
+    .note{padding:12px;border-radius:12px;border:1px dashed #C7D2FE;background:#F4F7FF;color:var(--navy);font-weight:800;font-size:13px}
+    .links a{color:var(--blue);text-decoration:none;font-weight:800}
+    .links a:hover{text-decoration:underline}
+    .pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;
+      font-size:12px;color:var(--muted);font-weight:700;margin:6px 6px 0 0}
   </style>
 </head>
 
@@ -70,195 +57,204 @@
 
     <!-- HERO -->
     <div class="card shadow">
-      <div class="heroTop">
+      <div class="hero">
         <div>
           <div class="heroLeft">
-            <!-- PHOTO : ton fichier s'appelle "Bruno BROVOU.jpeg" -->
             <img class="avatar" src="Bruno%20BROVOU.jpeg" alt="Photo Bruno Brovou">
             <div>
               <h1>Bruno Brovou — Data Analyst confirmé</h1>
-              <p class="tagline">Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)</p>
-              <p class="small">
-                Je transforme des besoins métier en <b>KPI fiables</b> et en <b>dashboards décisionnels</b> :
-                cadrage, qualité des données, modélisation, dataviz et recommandations.
-              </p>
+              <p class="small">Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)</p>
+              <p>Je transforme des besoins métier en <b>KPI fiables</b> et en <b>dashboards décisionnels</b> : cadrage, qualité des données, modélisation, dataviz et recommandations.</p>
             </div>
           </div>
 
+          <div class="chips">
+            <span class="chip">13 projets IT/Data</span>
+            <span class="chip">26 compétences (1–5)</span>
+            <span class="chip">20 sujets suivis</span>
+            <span class="chip">14 priorisés “Go”</span>
+            <span class="chip">2915 min retards</span>
+          </div>
+
           <div class="note" style="margin-top:12px;">
-            Objectif du portfolio : Permettre une lecture recruteur en &lt; 2 minutes, avec preuves et livrables, avant entretien.
+            Lecture recruteur &lt; 2 minutes • Preuves cliquables • Livrables complets (cadrage → build → transfert)
           </div>
-          
         </div>
+
         <div class="btns">
-              <a href="CV_Bruno_Brovou_Data_Analyst_confirme.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-          </div>
-      </div>
-    </div>
-
-    <!-- DEMANDE CLIENT + INDICATEURS -->
-    <div class="grid section">
-      <div class="card shadow">
-        <h2>Demande du client (Aéroworld)</h2>
-        <ul>
-          <li><b>Évaluer avant entretien</b> via un portfolio lisible et vérifiable (preuves).</li>
-          <li>Démontrer un profil <b>Data Analyst confirmé</b> : KPI, qualité des données, dataviz, recommandations.</li>
-          <li>Montrer une posture <b>consultant</b> : cadrage → spécifications → planification → transfert.</li>
-          <li>Montrer l’<b>innovation</b> : veille structurée → décision (Go/Tester) → priorisation.</li>
-        </ul>
-      </div>
-
-      <div class="card shadow">
-        <h2>Indicateurs</h2>
-        <p class="small">Les KPI ci-dessous démontrent la couverture des attentes client : profil + innovation + impact métier.</p>
-        <ul>
-          <li><b>13</b> Projets IT/Data présentés avec preuves</li>
-          <li><b>26</b> Compétences structurées (matrice niveau 1–5)</li>
-          <li><b>20</b> Sujets de veille suivis, dont <b>14</b> priorisés “Go”</li>
-          <li><b>2915</b> Minutes de retards analysées (impact opérationnel maintenance)</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- PROFIL + PARCOURS -->
-    <div class="grid section">
-      <div class="card shadow">
-        <h2>Présentation du profil</h2>
-        <ul>
-          <li><b>Positionnement</b> : Data Analyst confirmé (Power BI, SQL, Data Quality, KPI).</li>
-          <li><b>Approche</b> : Besoin → données → KPI → dataviz → recommandations → transfert.</li>
-          <li><b>Preuves</b> : Dashboards + livrables (analyse, CDC, Gantt, doc, vidéo).</li>
-        </ul>
-        <div class="divider"></div>
-        <h2>Parcours & expériences (synthèse)</h2>
-        <ul>
-          <li>Expérience SI/Reporting + pilotage par KPI (environnements exigeants).</li>
-          <li>Compétence en cadrage, qualité, visualisation et adoption (documentation/formation).</li>
-        </ul>
-      </div>
-
-      <div class="card shadow">
-        <h2>Vision du métier (Data Analyst confirmé)</h2>
-        <p>
-          Pour moi, le rôle d’un Data Analyst confirmé est de relier la donnée à la décision <b>de bout en bout</b> :
-          cadrage, définitions KPI, qualité, restitution, puis adoption.
-        </p>
-        <p>
-          Un livrable data n’a de valeur que s’il est <b>fiable</b>, <b>explicable</b> et <b>maintenable</b>
-          (règles, contrôles, documentation et transfert).
-        </p>
-
-        <div class="divider"></div>
-
-        <h2>Pertinence du portfolio</h2>
-        <p>
-          Ce portfolio est aligné avec les besoins d’Aéroworld : <b>pilotage KPI</b>, <b>data quality</b>,
-          <b>veille structurée</b> et <b>adoption/management</b>. Il démontre mes compétences et ma capacité à livrer
-          un projet complet, avec preuves et transfert.
-        </p>
-      </div>
-    </div>
-
-    <!-- METHODOLOGIE + DIFFICULTES -->
-    <div class="grid section">
-      <div class="card shadow">
-        <h2>Méthodologie suivie (conception des livrables)</h2>
-        <ol class="small">
-          <li>Carte mentale → structure & navigation du portfolio</li>
-          <li>Analyse besoin métier → problématique + KPI</li>
-          <li>Cahier des charges → users + user stories + critères d’acceptation</li>
-          <li>Gantt → planification sur 14 jours + jalons</li>
-          <li>Mock-ups → UX avant construction</li>
-          <li>Dashboards Power BI → Profil + Veille (+ insights maintenance)</li>
-          <li>Transfert → vidéo + documentation (guide + dictionnaire KPI)</li>
-          <li>Publication → GitHub Pages (accès simple, preuves cliquables)</li>
-        </ol>
-      </div>
-
-      <div class="card shadow">
-        <h2>Difficultés rencontrées & solutions</h2>
-        <ul>
-          <li><b>Types & décimaux (Power Query)</b> → Trim/Clean + “type avec paramètres régionaux”.</li>
-          <li><b>Lisibilité (trop d’informations)</b> → mock-ups + hiérarchie visuelle + navigation simple.</li>
-          <li><b>Cohérence KPI</b> → dictionnaire KPI + documentation + recette.</li>
-          <li><b>Adoption</b> → vidéo de formation + documentation + liens preuves.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- DASHBOARDS + LIVRABLES -->
-    <div class="grid section">
-      <div class="card shadow">
-        <h2>Dashboards</h2>
-        <ul>
-          <li><b>Profil</b> : Matrice de compétences (1–5), projets, preuves</li>
-          <li><b>Veille</b> : Go/Tester + insights maintenance (Top ATA, immobilisation, retards)</li>
-        </ul>
-        <div class="divider"></div>
-        <div class="linkList">
-          <a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Télécharger le PBIX (Dashboards)</a>
+          <a class="primary" href="LIEN_POWER_BI_LECTURE" target="_blank" rel="noopener">Dashboards Power BI (lecture)</a>
+          <a href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo (MP4)</a>
+          <a href="Documentation.pdf" target="_blank" rel="noopener">Documentation (PDF)</a>
+          <a href="CV_Bruno_Brovou_Data_Analyst_confirme_v1.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a href="https://github.com/brovou" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+    </div>
+
+    <!-- RECTANGLE 1 -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Rectangle 1 — Présentation d’Aéroworld (Contexte & objectif)</h2>
+        <h3>Aéroworld — Contexte & objectif</h3>
+        <p>
+          Aéroworld est une entreprise internationale du secteur aéronautique, engagée dans la conception, l’exploitation
+          et la maintenance de systèmes aéronautiques. Dans un contexte d’exigences fortes (sécurité, fiabilité,
+          performance opérationnelle, conformité), l’entreprise souhaite renforcer sa capacité à <b>piloter par la donnée</b>
+          et à <b>industrialiser les usages data</b>.
+        </p>
+        <p class="small">
+          Enjeux récurrents : dispersion des données, KPI non harmonisés, manque de visibilité end-to-end, besoin
+          d’automatisation, adoption inégale, exigences élevées sur traçabilité/documentation/gouvernance.
+        </p>
+        <p><b>Objectif :</b> mettre en place un dispositif data pour le pilotage et l’amélioration continue, avec une logique
+          “preuve” (indicateurs fiables, explicables, maintenables).</p>
+
+        <div class="divider"></div>
+        <span class="pill">Sécurité • Fiabilité • Performance</span>
+        <span class="pill">Conformité • Traçabilité</span>
+        <span class="pill">Gouvernance KPI</span>
+      </div>
 
       <div class="card shadow">
-        <h2>Livrables (Projet portfolio)</h2>
-        <ul class="linkList">
-          <li><a href="Carte mentale.pdf" target="_blank" rel="noopener">Carte mentale (PDF)</a></li>
-          <li><a href="https://miro.com/welcomeonboard/L0NJcmdGa3VpcW85MHlFekxObWhJeFpDeWQ1T2JEaU5TSUNOcTNDNGMybmtCVkJZZkt6dFBib0trbDI2UjEvNU5DcDJjTER4YTNiSUFYNkZEYlBsejVhWnB0SUx3eHEyaXV5NkgrTDdFV1hwR2lFRjJkR2dPN2lrM0dyU2t4K2hhWWluRVAxeXRuUUgwWDl3Mk1qRGVRPT0hdjE=?share_link_id=65280681713" target="_blank" rel="noopener">Carte mentale</a></li>
+        <h2>Livrables (preuves)</h2>
+        <ul class="links">
           <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse des besoins métiers (PDF)</a></li>
           <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener">Cahier des charges fonctionnel (PDF)</a></li>
-          <li><a href="Diagramme de Gantt.pbix" target="_blank" rel="noopener">Diagramme de Gantt (PBIX)</a></li>
-          <li><a href="Mock-up — Dashboord Profil-Veille.pdf" target="_blank" rel="noopener">Mock-ups (PDF)</a></li>
-          <li><a href="https://miro.com/welcomeonboard/My9ESE9aeWVKVFV5cE9iTTBZYjRWQWs2WHE1dG9VQTFpTjZ4TER0U3VLM1dWMlZTNlhCWDM2Q2RuYnhtSXNxb05JQnhUSnhNaUoyYnFSaE4vZ0Z5bjVhWnB0SUx3eHEyaXV5NkgrTDdFV1ZxakU0bFordldJMHVlZ25ZbU01T0FQdGo1ZEV3bUdPQWRZUHQzSGl6V2NBPT0hdjE=?share_link_id=476298886421" target="_blank" rel="noopener">Mock-ups</a></li>
-          <li><a href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo de formation</a></li>
-          <li><a href="Doculentation" target="_blank" rel="noopener">Documentation (PDF)</a></li>
+          <li><span class="small">(Option) Présentation Aéroworld (1 page)</span></li>
         </ul>
-        <p class="small">Livrables de cadrage → planification → UX → réalisation → transfert.</p>
       </div>
     </div>
 
-    <!-- COMPETENCES + SOFT SKILLS -->
+    <!-- RECTANGLE 2 -->
     <div class="grid section">
       <div class="card shadow">
-        <h2>Compétences métier (hard skills)</h2>
+        <h2>Rectangle 2 — Analyse de la demande Aéroworld (besoins métier + activités)</h2>
+        <h3>Analyse de la demande client — 4 besoins métier</h3>
+        <ol>
+          <li><b>Pilotage KPI</b> : référentiel KPI unifié, KPI Tree, dictionnaire des indicateurs, cycle de gouvernance.</li>
+          <li><b>Data Quality</b> : plan qualité, gestion des anomalies, contrôles automatisés (complétude, unicité, cohérence, fraîcheur).</li>
+          <li><b>Innovation / Veille</b> : veille récurrente, benchmark (3–5 options), cadre Go/No Go, recommandations.</li>
+          <li><b>Management / Adoption</b> : plan d’accompagnement, vidéo de formation, documentation, rituels/RACI.</li>
+        </ol>
+
+        <div class="divider"></div>
+        <p class="small"><b>Activités menées :</b> cadrage (questions métier), définition des KPI, règles de données, priorisation et logique de preuve.</p>
+      </div>
+
+      <div class="card shadow">
+        <h2>Livrables (preuves)</h2>
+        <ul class="links">
+          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse des besoins métiers (PDF)</a></li>
+          <li><span class="small">(Option) Dictionnaire KPI (extrait)</span></li>
+          <li><span class="small">(Option) Liste “Questions métier → KPI”</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RECTANGLE 3 -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Rectangle 3 — Livrables Aéroworld (comment je réponds)</h2>
+        <h3>Livrables — réponse structurée à la demande</h3>
         <ul>
-          <li><b>Cadrage & KPI</b> : Problématique, questions métier, dictionnaire KPI.</li>
-          <li><b>Data Quality</b> : Règles qualité, contrôles, traçabilité.</li>
-          <li><b>BI / Storytelling</b> : Power BI, UX, navigation, restitution.</li>
-          <li><b>SQL</b> : Requêtes, agrégations, structuration relationnelle.</li>
-          <li><b>Veille / innovation</b> : Benchmark + priorisation Go/Tester + recommandations.</li>
+          <li><b>Cadrage</b> : problématique, KPI, gouvernance</li>
+          <li><b>Spécification</b> : exigences, users, critères d’acceptation</li>
+          <li><b>Planification</b> : jalons, suivi, priorisation</li>
+          <li><b>UX</b> : mock-ups pour garantir lisibilité</li>
+          <li><b>Réalisation</b> : dashboards Profil + Veille</li>
+          <li><b>Transfert</b> : vidéo + documentation (guide + runbook + dictionnaire KPI)</li>
         </ul>
       </div>
 
       <div class="card shadow">
-        <h2>Soft skills</h2>
-        <ul>
-          <li><b>Rigueur</b> : Contrôles qualité + recette + documentation.</li>
-          <li><b>Esprit de synthèse</b> : KPI + recommandations actionnables.</li>
-          <li><b>Communication</b> : Vidéo de formation + documentation PDF.</li>
-          <li><b>Pilotage</b> : Cahier des charges + Gantt + jalons.</li>
-          <li><b>Orientation client</b> : Preuves cliquables + parcours de lecture simple.</li>
+        <h2>Livrables (exactement comme attendu)</h2>
+        <ul class="links">
+          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse besoin métier (PDF)</a></li>
+          <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener">Cahier des charges fonctionnel (PDF)</a></li>
+          <li><a href="Diagramme de Gantt.pbix" target="_blank" rel="noopener">Diagramme de Gantt (PBIX)</a></li>
+          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Dashboards (PBIX) — Profil + Veille</a></li>
+          <li><a href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo formation (MP4) — 8–10 min</a></li>
+          <li><a href="Documentation.pdf" target="_blank" rel="noopener">Documentation (PDF) — guide + dictionnaire KPI + runbook</a></li>
+          <li><a href="Mock-up 1&2 — Dashboord Profil & Veille.pdf" target="_blank" rel="noopener">Mock-ups (PDF)</a></li>
+          <li><a href="Carte mentale.pdf" target="_blank" rel="noopener">Carte mentale (PDF)</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- ETUDES DE CAS -->
-    <div class="card shadow section">
-      <h2>Études de cas</h2>
-      <ul>
-        <li><b>Aéroworld (Power BI)</b> : cadrage → KPI → dashboards → recommandations → transfert</li>
-        <li><b>P12 — Détection de faux billets (ML)</b> : data prep → classification → métriques → recommandation d’usage</li>
-      </ul>
+    <!-- RECTANGLE 4 -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Rectangle 4 — Compétences & expériences</h2>
+
+        <h3>Hard skills (compétences métier)</h3>
+        <ul>
+          <li><b>BI / Dataviz</b> : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot).</li>
+          <li><b>Data</b> : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases).</li>
+          <li><b>Qualité & gouvernance</b> : règles qualité, dictionnaire KPI, traçabilité, principes RGPD.</li>
+          <li><b>Gestion de projet</b> : cadrage, planification (Gantt), jalons, reporting, coordination.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3>Soft skills (avec preuves)</h3>
+        <ul>
+          <li><b>Rigueur</b> : contrôles qualité + documentation + recette.</li>
+          <li><b>Esprit de synthèse</b> : KPI + recommandations Go/Tester.</li>
+          <li><b>Communication / pédagogie</b> : vidéo de formation + documentation.</li>
+          <li><b>Pilotage</b> : Gantt + jalons + cahier des charges.</li>
+          <li><b>Orientation client</b> : preuves cliquables + lecture en &lt; 2 minutes.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3>Expériences (extraits pertinents)</h3>
+        <ul>
+          <li><b>BAD (Décaissements)</b> : administration plateforme multi-utilisateurs, reporting KPI, amélioration de workflows, automatisations Excel/Power Query.</li>
+          <li><b>Eden Corporate</b> : pilotage e-School (SaaS), recueil des besoins, planification, coordination et formation.</li>
+          <li><b>Nogetc</b> : conception et maintenance d’applications web.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3>Études de cas (minimum 2, pertinents)</h3>
+        <ul>
+          <li><b>Aéroworld (Power BI)</b> : cadrage → KPI → dashboards → recommandations → transfert (doc + vidéo).</li>
+          <li><b>P12 — Détection de faux billets (ML)</b> : data prep → classification → métriques → recommandation d’usage.</li>
+        </ul>
+      </div>
+
+      <div class="card shadow">
+        <h2>Livrables associés</h2>
+        <ul class="links">
+          <li><a href="CV_Bruno_Brovou_Data_Analyst_confirme_v1.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Dashboards (PBIX)</a></li>
+          <li><a href="Documentation.pdf" target="_blank" rel="noopener">Documentation (PDF)</a></li>
+          <li><a href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo de formation (MP4)</a></li>
+        </ul>
+        <p class="small" style="margin-top:10px;">Objectif : démontrer un niveau confirmé, avec preuves et transfert (utilisable/maintenable).</p>
+      </div>
     </div>
 
-    <!-- CONTACT -->
-    <div class="card shadow section">
-      <h2>Contact</h2>
-      <ul class="small">
-        <li>Email : <b>j.b.brovou@gmail.com</b></li>
-        <li>LinkedIn : <a href="https://www.linkedin.com/in/bruno-brovou-645a12385/" target="_blank" rel="noopener">Bruno BROVOU</a></li>
-      </ul>
-      <p class="small">© Bruno Brovou — Portfolio Data (GitHub Pages)</p>
+    <!-- RECTANGLE 5 -->
+    <div class="grid section">
+      <div class="card shadow">
+        <h2>Rectangle 5 — Contact</h2>
+        <p><b>Contact & prochaine étape</b></p>
+        <p>Disponible pour une démonstration courte : <b>Profil → Veille → preuves</b>.</p>
+        <p class="small">Objectif : poste <b>Data Analyst confirmé</b> (pilotage KPI, data quality, BI, innovation/veille).</p>
+      </div>
+
+      <div class="card shadow">
+        <h2>Liens</h2>
+        <ul class="links">
+          <li><a href="CV_Bruno_Brovou_Data_Analyst_confirme_v1.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Power BI (lecture)</a> <span class="small">(à renseigner)</span></li>
+          <li><a href="https://github.com/brovou" target="_blank" rel="noopener">GitHub</a></li>
+          <li>Email : <b>j.b.brovou@gmail.com</b></li>
+          <li><a href="LIEN_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a> <span class="small">(à renseigner)</span></li>
+        </ul>
+        <p class="small">© Bruno Brovou — Portfolio Data (GitHub Pages)</p>
+      </div>
     </div>
 
   </div>
