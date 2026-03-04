@@ -16,7 +16,7 @@
     .container{max-width:1100px;margin:0 auto;padding:22px 28px 28px;}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
     .shadow{box-shadow:0 8px 20px rgba(16,24,40,.06);}
-    .section{margin-top:14px; scroll-margin-top:80px;}
+    .section{margin-top:14px; scroll-margin-top:90px;}
     .grid{display:grid;grid-template-columns:1.7fr .9fr;gap:14px;margin-top:14px}
     @media(max-width:900px){.grid{grid-template-columns:1fr}.nav{position:static}.container{padding:16px}}
     h1{margin:0;color:var(--navy);font-size:28px;letter-spacing:-.2px}
@@ -57,53 +57,41 @@
       padding:10px 28px;
     }
     .navBrand{font-weight:900;color:var(--navy);font-size:14px}
-    .navLinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+    .navLinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;align-items:center}
     .navLinks a{
       text-decoration:none; color:var(--navy);
       font-weight:800; font-size:13px;
       padding:8px 10px; border-radius:999px;
       border:1px solid var(--border); background:#fff;
+      white-space:nowrap;
     }
     .navLinks a:hover{border-color:#C7D2FE}
+    select{background:#fff}
   </style>
 </head>
-<script>
-  const DEFAULT_LANG = "fr";
-  const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
-  const saved = localStorage.getItem("portfolio_lang");
-  const initial = saved || browserLang;
 
-  const els = () => document.querySelectorAll("[data-fr][data-en]");
-  function setLang(lang) {
-    els().forEach(el => el.textContent = el.dataset[lang]);
-    document.documentElement.lang = lang;
-    localStorage.setItem("portfolio_lang", lang);
-    const sel = document.getElementById("langSelect");
-    if (sel) sel.value = lang;
-  }
-  setLang(initial);
-  document.getElementById("langSelect")?.addEventListener("change", (e) => setLang(e.target.value));
-</script>
 <body>
   <!-- MENU -->
   <div class="nav">
     <div class="navInner">
-      <div class="navBrand">Bruno Brovou — Portfolio</div>
+      <div class="navBrand" data-fr="Bruno Brovou — Portfolio" data-en="Bruno Brovou — Portfolio">Bruno Brovou — Portfolio</div>
+
       <div class="navLinks">
-        <a href="#accueil">Accueil</a>
-        <a href="#aeroworld">Aéroworld Corporate</a>
-        <a href="#demande">Demande</a>
-        <a href="#livrables">Livrables</a>
-        <a href="#competences">Compétences</a>
-        <a href="#contact">Contact</a>
+        <a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="#aeroworld" data-fr="Aéroworld Corporate" data-en="Aeroworld Corporate">Aéroworld Corporate</a>
+        <a href="#demande" data-fr="Demande" data-en="Client Request">Demande</a>
+        <a href="#livrables" data-fr="Livrables" data-en="Deliverables">Livrables</a>
+        <a href="#competences" data-fr="Compétences" data-en="Skills">Compétences</a>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+
+        <div style="display:flex; gap:8px; align-items:center; margin-left:6px;">
+          <span style="font-weight:800;color:var(--navy);font-size:13px;" data-fr="Langue" data-en="Language">Langue</span>
+          <select id="langSelect" style="padding:8px 10px;border-radius:999px;border:1px solid var(--border);font-weight:800;">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
       </div>
-      <div style="display:flex; gap:8px; align-items:center;">
-  <span style="font-weight:800;color:var(--navy);font-size:13px;">Lang</span>
-  <select id="langSelect" style="padding:8px 10px;border-radius:999px;border:1px solid var(--border);font-weight:800;">
-    <option value="fr">Français</option>
-    <option value="en">English</option>
-  </select>
-</div>
     </div>
   </div>
 
@@ -116,27 +104,37 @@
           <div class="heroLeft">
             <img class="avatar" src="Bruno%20BROVOU.jpeg" alt="Photo Bruno Brovou">
             <div>
-              <h1>Bruno Brovou — Data Analyst confirmé</h1>
-              <p class="small">Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)</p>
-              <p>Je transforme des besoins métier en <b>KPI fiables</b> et en <b>dashboards décisionnels</b> : cadrage, qualité des données, modélisation, dataviz et recommandations.</p>
+              <h1 data-fr="Bruno Brovou — Data Analyst confirmé" data-en="Bruno Brovou — Senior Data Analyst">Bruno Brovou — Data Analyst confirmé</h1>
+              <p class="small"
+                 data-fr="Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)"
+                 data-en="Power BI • SQL • Data Quality • KPI — Aircraft maintenance (Aeroworld case)">
+                 Power BI • SQL • Data Quality • KPI — Maintenance aéronautique (cas Aéroworld)
+              </p>
+              <p
+                data-fr="Je transforme des besoins métier en KPI fiables et en dashboards décisionnels : cadrage, qualité des données, modélisation, dataviz et recommandations."
+                data-en="I turn business needs into reliable KPIs and decision-ready dashboards: scoping, data quality, modeling, data visualization, and actionable recommendations.">
+                Je transforme des besoins métier en <b>KPI fiables</b> et en <b>dashboards décisionnels</b> : cadrage, qualité des données, modélisation, dataviz et recommandations.
+              </p>
             </div>
           </div>
 
           <div class="chips">
-            <span class="chip">13 Projets IT/Data</span>
-            <span class="chip">26 Compétences (1–5)</span>
-            <span class="chip">20 Sujets suivis</span>
-            <span class="chip">14 Priorisés “Go”</span>
+            <span class="chip" data-fr="13 Projets IT/Data" data-en="13 IT/Data projects">13 Projets IT/Data</span>
+            <span class="chip" data-fr="26 Compétences (1–5)" data-en="26 skills (1–5)">26 Compétences (1–5)</span>
+            <span class="chip" data-fr="20 Sujets suivis" data-en="20 topics tracked">20 Sujets suivis</span>
+            <span class="chip" data-fr="14 Priorisés “Go”" data-en="14 prioritized “Go”">14 Priorisés “Go”</span>
           </div>
 
-          <div class="note" style="margin-top:12px;">
+          <div class="note" style="margin-top:12px;"
+               data-fr="Lecture < 2 minutes • Preuves cliquables • Livrables complets (cadrage → build → transfert)"
+               data-en="Read in < 2 minutes • Clickable evidence • End-to-end deliverables (scoping → build → handover)">
             Lecture &lt; 2 minutes • Preuves cliquables • Livrables complets (cadrage → build → transfert)
           </div>
         </div>
 
         <div class="btns">
-          <a href="CV_Bruno_Brovou_Data_Analyst_confirme.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-          <a href="https://github.com/brovou" target="_blank" rel="noopener">GitHub</a>
+          <a href="CV_Bruno_Brovou_Data_Analyst_confirme.pdf" target="_blank" rel="noopener" data-fr="CV (PDF)" data-en="Resume (PDF)">CV (PDF)</a>
+          <a href="https://github.com/brovou" target="_blank" rel="noopener" data-fr="GitHub" data-en="GitHub">GitHub</a>
         </div>
       </div>
     </div>
@@ -144,32 +142,41 @@
     <!-- RECTANGLE 1 -->
     <div id="aeroworld" class="grid section">
       <div class="card shadow">
-        <h2>Présentation d’Aéroworld Corporate</h2>
-        <h3>Aéroworld Corporate — Contexte & objectif</h3>
-        <p>
+        <h2 data-fr="Présentation d’Aéroworld Corporate" data-en="Aeroworld Corporate — Company Overview">Présentation d’Aéroworld Corporate</h2>
+        <h3 data-fr="Aéroworld Corporate — Contexte & objectif" data-en="Aeroworld Corporate — Context & Objective">Aéroworld Corporate — Contexte & objectif</h3>
+
+        <p data-fr="Aéroworld Corporate est une entreprise internationale du secteur aéronautique, engagée dans la conception, l’exploitation et la maintenance de systèmes aéronautiques. Dans un contexte d’exigences fortes (sécurité, fiabilité, performance opérationnelle, conformité), l’entreprise souhaite renforcer sa capacité à piloter par la donnée et à industrialiser les usages data."
+           data-en="Aeroworld Corporate is an international aerospace company involved in the design, operations, and maintenance of aircraft systems. In a high-demand environment (safety, reliability, operational performance, compliance), the company aims to strengthen data-driven management and industrialize data usage across teams.">
           Aéroworld Corporate est une entreprise internationale du secteur aéronautique, engagée dans la conception, l’exploitation
           et la maintenance de systèmes aéronautiques. Dans un contexte d’exigences fortes (sécurité, fiabilité,
           performance opérationnelle, conformité), l’entreprise souhaite renforcer sa capacité à <b>piloter par la donnée</b>
           et à <b>industrialiser les usages data</b>.
         </p>
-        <p class="small">
+
+        <p class="small"
+           data-fr="Enjeux récurrents : dispersion des données, KPI non harmonisés, manque de visibilité end-to-end, besoin d’automatisation, adoption inégale, exigences élevées sur traçabilité/documentation/gouvernance."
+           data-en="Recurring challenges: data fragmentation, inconsistent KPI definitions, limited end-to-end visibility, need for automation, uneven tool adoption, and high expectations around traceability, documentation, and governance.">
           Enjeux récurrents : Dispersion des données, KPI non harmonisés, manque de visibilité end-to-end, besoin
           d’automatisation, adoption inégale, exigences élevées sur traçabilité/documentation/gouvernance.
         </p>
-        <p><b>Objectif :</b> Mettre en place un dispositif data pour le pilotage et l’amélioration continue, avec une logique
-          “preuve” (indicateurs fiables, explicables, maintenables).</p>
+
+        <p data-fr="Objectif : mettre en place un dispositif data pour le pilotage et l’amélioration continue, avec une logique “preuve” (indicateurs fiables, explicables, maintenables)."
+           data-en="Objective: implement a data operating model for management and continuous improvement, based on evidence (reliable, explainable, and maintainable indicators).">
+          <b>Objectif :</b> Mettre en place un dispositif data pour le pilotage et l’amélioration continue, avec une logique
+          “preuve” (indicateurs fiables, explicables, maintenables).
+        </p>
 
         <div class="divider"></div>
-        <span class="pill">Sécurité • Fiabilité • Performance</span>
-        <span class="pill">Conformité • Traçabilité</span>
-        <span class="pill">Gouvernance KPI</span>
+        <span class="pill" data-fr="Sécurité • Fiabilité • Performance" data-en="Safety • Reliability • Performance">Sécurité • Fiabilité • Performance</span>
+        <span class="pill" data-fr="Conformité • Traçabilité" data-en="Compliance • Traceability">Conformité • Traçabilité</span>
+        <span class="pill" data-fr="Gouvernance KPI" data-en="KPI Governance">Gouvernance KPI</span>
       </div>
 
       <div class="card shadow">
-        <h2>Livrables</h2>
+        <h2 data-fr="Livrables" data-en="Deliverable">Livrables</h2>
         <ul class="links">
-          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse des besoins métiers (PDF)</a></li>
-          <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener">Cahier des charges fonctionnel (PDF)</a></li>
+          <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener"
+                 data-fr="Cahier des charges fonctionnel (PDF)" data-en="Functional specifications (PDF)">Cahier des charges fonctionnel (PDF)</a></li>
         </ul>
       </div>
     </div>
@@ -177,22 +184,41 @@
     <!-- RECTANGLE 2 -->
     <div id="demande" class="grid section">
       <div class="card shadow">
-        <h2>Analyse de la demande Aéroworld</h2>
-        <h3>Analyse de la demande client — 4 besoins métier</h3>
+        <h2 data-fr="Analyse de la demande Aéroworld" data-en="Aeroworld — Request Analysis">Analyse de la demande Aéroworld</h2>
+        <h3 data-fr="Analyse de la demande client — 4 besoins métier" data-en="Client request — 4 business needs">Analyse de la demande client — 4 besoins métier</h3>
+
         <ol>
-          <li><b>Pilotage KPI</b> : Référentiel KPI unifié, KPI Tree, dictionnaire des indicateurs, cycle de gouvernance.</li>
-          <li><b>Data Quality</b> : Plan qualité, gestion des anomalies, contrôles automatisés (complétude, unicité, cohérence, fraîcheur).</li>
-          <li><b>Innovation / Veille</b> : Veille récurrente, benchmark (3–5 options), cadre Go/No Go, recommandations.</li>
-          <li><b>Management / Adoption</b> : Plan d’accompagnement, vidéo de formation, documentation, rituels/RACI.</li>
+          <li data-fr="Pilotage KPI : référentiel KPI unifié, KPI Tree, dictionnaire des indicateurs, cycle de gouvernance."
+              data-en="KPI performance management: unified KPI framework, KPI tree, KPI dictionary, governance cycle.">
+              <b>Pilotage KPI</b> : Référentiel KPI unifié, KPI Tree, dictionnaire des indicateurs, cycle de gouvernance.
+          </li>
+          <li data-fr="Data Quality : plan qualité, gestion des anomalies, contrôles automatisés (complétude, unicité, cohérence, fraîcheur)."
+              data-en="Data Quality: quality plan, anomaly management, automated checks (completeness, uniqueness, consistency, freshness).">
+              <b>Data Quality</b> : Plan qualité, gestion des anomalies, contrôles automatisés (complétude, unicité, cohérence, fraîcheur).
+          </li>
+          <li data-fr="Innovation / Veille : veille récurrente, benchmark (3–5 options), cadre Go/No Go, recommandations."
+              data-en="Innovation / Watch: recurring watch, benchmark (3–5 options), Go/No-Go decision framework, recommendations.">
+              <b>Innovation / Veille</b> : Veille récurrente, benchmark (3–5 options), cadre Go/No Go, recommandations.
+          </li>
+          <li data-fr="Management / Adoption : plan d’accompagnement, vidéo de formation, documentation, rituels/RACI."
+              data-en="Management / Adoption: enablement plan, training video, documentation, rituals/RACI.">
+              <b>Management / Adoption</b> : Plan d’accompagnement, vidéo de formation, documentation, rituels/RACI.
+          </li>
         </ol>
+
         <div class="divider"></div>
-        <p class="small"><b>Activités menées :</b> Cadrage, définition des KPI, règles de données, priorisation et logique de preuve.</p>
+        <p class="small"
+           data-fr="Activités menées : cadrage, définition des KPI, règles de données, priorisation et logique de preuve."
+           data-en="Work performed: scoping, KPI definition, data rules, prioritization, and an evidence-based approach.">
+          <b>Activités menées :</b> Cadrage, définition des KPI, règles de données, priorisation et logique de preuve.
+        </p>
       </div>
 
       <div class="card shadow">
-        <h2>Livrables</h2>
+        <h2 data-fr="Livrables" data-en="Deliverable">Livrables</h2>
         <ul class="links">
-          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse des besoins métiers (PDF)</a></li>
+          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener"
+                 data-fr="Analyse des besoins métiers (PDF)" data-en="Business needs analysis (PDF)">Analyse des besoins métiers (PDF)</a></li>
         </ul>
       </div>
     </div>
@@ -200,29 +226,46 @@
     <!-- RECTANGLE 3 -->
     <div id="livrables" class="grid section">
       <div class="card shadow">
-        <h2>Livrables Aéroworld Corporate</h2>
-        <h3>Livrables à la demande</h3>
+        <h2 data-fr="Besoins métier demandés (Aéroworld)" data-en="Business needs requested (Aeroworld)">Besoins Métiers</h2>
         <ul>
-          <li><b>Cadrage</b> : Problématique, KPI, gouvernance</li>
-          <li><b>Spécification</b> : Exigences, users, critères d’acceptation</li>
-          <li><b>Planification</b> : Jalons, suivi, priorisation</li>
-          <li><b>UX</b> : Mock-ups pour garantir lisibilité</li>
-          <li><b>Réalisation</b> : Dashboards Profil + Veille</li>
-          <li><b>Transfert</b> : Vidéo + documentation (guide + runbook + dictionnaire KPI)</li>
+          <li data-fr="Cadrage : problématique, KPI, gouvernance" data-en="Scoping: problem statement, KPIs, governance"><b>Cadrage</b> : Problématique, KPI, gouvernance</li>
+          <li data-fr="Spécification : exigences, users, critères d’acceptation" data-en="Specification: requirements, users, acceptance criteria"><b>Spécification</b> : Exigences, users, critères d’acceptation</li>
+          <li data-fr="Planification : jalons, suivi, priorisation" data-en="Planning: milestones, tracking, prioritization"><b>Planification</b> : Jalons, suivi, priorisation</li>
+          <li data-fr="UX : mock-ups pour garantir la lisibilité" data-en="UX: mock-ups to ensure readability"><b>UX</b> : Mock-ups pour garantir lisibilité</li>
+          <li data-fr="Réalisation : dashboards Profil + Veille" data-en="Build: Profile + Watch dashboards"><b>Réalisation</b> : Dashboards Profil + Veille</li>
+          <li data-fr="Transfert : vidéo + documentation (guide + runbook + dictionnaire KPI)" data-en="Handover: training video + documentation (user guide + runbook + KPI dictionary)"><b>Transfert</b> : Vidéo + documentation (guide + runbook + dictionnaire KPI)</li>
         </ul>
       </div>
 
       <div class="card shadow">
-        <h2>Livrables exactement comme attendu</h2>
-        <ul class="links">
-          <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener">Analyse besoin métier (PDF)</a></li>
-          <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener">Cahier des charges fonctionnel (PDF)</a></li>
-          <li><a href="Diagramme de Gantt.pbix" target="_blank" rel="noopener">Diagramme de Gantt (PBIX)</a></li>
-          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Dashboards (PBIX) — Profil + Veille</a></li>
-          <li><a href="vidéo de formation.mp4" target="_blank" rel="noopener">Vidéo formation (MP4) — 8–10 min</a></li>
-          <li><a href="Documentation.pdf" target="_blank" rel="noopener">Documentation (PDF) — guide + dictionnaire KPI + runbook</a></li>
-          <li><a href="https://miro.com/welcomeonboard/My9ESE9aeWVKVFV5cE9iTTBZYjRWQWs2WHE1dG9VQTFpTjZ4TER0U3VLM1dWMlZTNlhCWDM2Q2RuYnhtSXNxb05JQnhUSnhNaUoyYnFSaE4vZ0Z5bjVhWnB0SUx3eHEyaXV5NkgrTDdFV1cwUzNsb2tYZ29oK2p1WGZCUW16SkhzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=978527517287" target="_blank" rel="noopener">Mock-ups</a></li>
-          <li><a href="https://miro.com/welcomeonboard/L0NJcmdGa3VpcW85MHlFekxObWhJeFpDeWQ1T2JEaU5TSUNOcTNDNGMybmtCVkJZZkt6dFBib0trbDI2UjEvNU5DcDJjTER4YTNiSUFYNkZEYlBsejVhWnB0SUx3eHEyaXV5NkgrTDdFV1ZicjFweWJrKzJ5am44S3R4dGNTR2p3VHhHVHd5UWtSM1BidUtUYmxycDRnPT0hdjE=?share_link_id=993327745824" target="_blank" rel="noopener">Carte mentale</a></li>
+        <h2 data-fr="Compétences acquises (pour répondre au besoin)" data-en="Skills acquired (to address the needs)">Compétence acquis</h2>
+
+        <h3 data-fr="Hard skills" data-en="Hard skills">Hard skills</h3>
+        <ul>
+          <li data-fr="BI / Dataviz : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot)"
+              data-en="BI / Data viz: Power BI (model, DAX, UX), Tableau, Excel (Power Query, Power Pivot)">
+            <b>BI / Dataviz</b> : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot)
+          </li>
+          <li data-fr="Data : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases)"
+              data-en="Data: SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (basics)">
+            <b>Data</b> : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases)
+          </li>
+          <li data-fr="Qualité & gouvernance : règles qualité, dictionnaire KPI, traçabilité, principes RGPD"
+              data-en="Quality & governance: data quality rules, KPI dictionary, traceability, GDPR principles">
+            <b>Qualité & gouvernance</b> : règles qualité, dictionnaire KPI, traçabilité, principes RGPD
+          </li>
+          <li data-fr="Gestion de projet : cadrage, planification (Gantt), jalons, reporting, coordination"
+              data-en="Project management: scoping, planning (Gantt), milestones, reporting, coordination">
+            <b>Gestion de projet</b> : cadrage, planification (Gantt), jalons, reporting, coordination
+          </li>
+        </ul>
+
+        <h3 data-fr="Soft skills" data-en="Soft skills">Soft skills</h3>
+        <ul>
+          <li data-fr="Rigueur • Synthèse • Communication/pédagogie • Collaboration • Orientation client"
+              data-en="Rigor • Synthesis • Communication/training • Collaboration • Client focus">
+            <b>Rigueur</b> • <b>Synthèse</b> • <b>Communication/pédagogie</b> • <b>Collaboration</b> • <b>Orientation client</b>
+          </li>
         </ul>
       </div>
     </div>
@@ -230,78 +273,184 @@
     <!-- RECTANGLE 4 -->
     <div id="competences" class="grid section">
       <div class="card shadow">
-        <h2>Compétences & expériences</h2>
+        <h2 data-fr="Compétences & expériences" data-en="Skills & experience">Compétences & expériences</h2>
 
-        <h3>Hard skills</h3>
+        <h3 data-fr="Hard skills" data-en="Hard skills">Hard skills</h3>
         <ul>
-          <li><b>BI / Dataviz</b> : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot).</li>
-          <li><b>Data</b> : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases).</li>
-          <li><b>Qualité & gouvernance</b> : Règles qualité, dictionnaire KPI, traçabilité, principes RGPD.</li>
-          <li><b>Gestion de projet</b> : Cadrage, planification (Gantt), jalons, reporting, coordination.</li>
+          <li data-fr="BI / Dataviz : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot)."
+              data-en="BI / Data viz: Power BI (model, DAX, UX), Tableau, Excel (Power Query, Power Pivot).">
+            <b>BI / Dataviz</b> : Power BI (modèle, DAX, UX), Tableau, Excel (Power Query, Power Pivot).
+          </li>
+          <li data-fr="Data : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases)."
+              data-en="Data: SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (basics).">
+            <b>Data</b> : SQL (Oracle, MySQL, SQLite, PostgreSQL), Python (pandas, numpy), R (bases).
+          </li>
+          <li data-fr="Qualité & gouvernance : règles qualité, dictionnaire KPI, traçabilité, principes RGPD."
+              data-en="Quality & governance: data quality rules, KPI dictionary, traceability, GDPR principles.">
+            <b>Qualité & gouvernance</b> : Règles qualité, dictionnaire KPI, traçabilité, principes RGPD.
+          </li>
+          <li data-fr="Gestion de projet : cadrage, planification (Gantt), jalons, reporting, coordination."
+              data-en="Project management: scoping, planning (Gantt), milestones, reporting, coordination.">
+            <b>Gestion de projet</b> : Cadrage, planification (Gantt), jalons, reporting, coordination.
+          </li>
         </ul>
 
         <div class="divider"></div>
 
-        <h3>Soft skills</h3>
+        <h3 data-fr="Soft skills" data-en="Soft skills">Soft skills</h3>
         <ul>
-          <li><b>Rigueur</b> : Contrôles qualité + documentation + recette.</li>
-          <li><b>Esprit de synthèse</b> : KPI + recommandations Go/Tester.</li>
-          <li><b>Communication / pédagogie</b> : Vidéo de formation + documentation.</li>
-          <li><b>Pilotage</b> : Gantt + jalons + cahier des charges.</li>
-          <li><b>Orientation client</b> : Preuves cliquables + lecture en &lt; 2 minutes.</li>
+          <li data-fr="Rigueur : contrôles qualité + documentation + recette."
+              data-en="Rigor: quality checks + documentation + acceptance testing.">
+            <b>Rigueur</b> : Contrôles qualité + documentation + recette.
+          </li>
+          <li data-fr="Esprit de synthèse : KPI + recommandations Go/Tester."
+              data-en="Synthesis: KPIs + Go/Test recommendations.">
+            <b>Esprit de synthèse</b> : KPI + recommandations Go/Tester.
+          </li>
+          <li data-fr="Communication / pédagogie : vidéo de formation + documentation."
+              data-en="Communication / training: training video + documentation.">
+            <b>Communication / pédagogie</b> : Vidéo de formation + documentation.
+          </li>
+          <li data-fr="Pilotage : Gantt + jalons + cahier des charges."
+              data-en="Delivery management: Gantt + milestones + specifications.">
+            <b>Pilotage</b> : Gantt + jalons + cahier des charges.
+          </li>
+          <li data-fr="Orientation client : preuves cliquables + lecture en < 2 minutes."
+              data-en="Client focus: clickable evidence + read in < 2 minutes.">
+            <b>Orientation client</b> : Preuves cliquables + lecture en &lt; 2 minutes.
+          </li>
         </ul>
 
         <div class="divider"></div>
 
-        <h3>Expériences</h3>
+        <h3 data-fr="Expériences" data-en="Experience">Expériences</h3>
         <ul>
-          <li><b>BAD (Décaissements)</b> : Administration plateforme multi-utilisateurs, reporting KPI, amélioration de workflows, automatisations Excel/Power Query.</li>
-          <li><b>Eden Corporate</b> : Pilotage e-School (SaaS), recueil des besoins, planification, coordination et formation.</li>
-          <li><b>Nogetc</b> : Conception et maintenance d’applications web.</li>
+          <li data-fr="BAD (Décaissements) : administration plateforme multi-utilisateurs, reporting KPI, amélioration de workflows, automatisations Excel/Power Query."
+              data-en="AfDB (Disbursements): multi-user platform administration, KPI reporting, workflow improvements, Excel/Power Query automation.">
+            <b>BAD (Décaissements)</b> : Administration plateforme multi-utilisateurs, reporting KPI, amélioration de workflows, automatisations Excel/Power Query.
+          </li>
+          <li data-fr="Eden Corporate : pilotage e-School (SaaS), recueil des besoins, planification, coordination et formation."
+              data-en="Eden Corporate: e-School (SaaS) delivery, requirements gathering, planning, coordination and training.">
+            <b>Eden Corporate</b> : Pilotage e-School (SaaS), recueil des besoins, planification, coordination et formation.
+          </li>
+          <li data-fr="Nogetc : conception et maintenance d’applications web."
+              data-en="Nogetc: web application development and maintenance.">
+            <b>Nogetc</b> : Conception et maintenance d’applications web.
+          </li>
         </ul>
 
         <div class="divider"></div>
 
-        <h3>Projets profesionnels</h3>
+        <h3 data-fr="Projets professionnels" data-en="Professional projects">Projets profesionnels</h3>
         <ul>
-          <li><b>ONEPCI — Conception & administration d’application web</b> — Application web de gestion/portail d’informations. Conception fonctionnelle et technique (structure pages, workflows), développement (HTML/CSS/JavaScript/PHP), administration applicative (comptes, droits, paramétrage) et support utilisateurs.</li>
-          <li><b>Application de gestion d’école (SaaS) — Conception & administration</b> — Solution e-learning / gestion scolaire (inscriptions, suivi, utilisateurs). Recueil des besoins (utilisateurs, rôles, processus), planification et coordination (roadmap, priorisation), administration de l’application (comptes, rôles, paramétrage) et support/formation utilisateurs. </li>
-          <li><b>Base de données immobilière (SQL)</b> — Modélisation relationnelle, requêtes d’analyse (JOIN, agrégats, filtres), contrôles de cohérence. <br><b>Objectif :</b> Produire des indicateurs fiables (prix, volumes, répartition, performance).</li>
-          <li><b>Tableau de bord Power BI (avancement de projets)</b> — Construction d’un reporting de pilotage : modèle de données, mesures, indicateurs d’avancement/retard, navigation et filtres. <br><b>Objectif :</b> Lecture management rapide et décision.</li>
-          <li><b>Étude sur l’eau potable</b> — Préparation des données, analyse descriptive (tendances/écarts), visualisations claires et recommandations. <br><b>Objectif :</b> Identifier les zones prioritaires et orienter l’action.</li>
-          <li><b>Étude de marché (R ou Python)</b> — Structuration/collecte des données, analyse et segmentation (typologies), synthèse des opportunités/risques et recommandations. <br><b>Objectif :</b> Soutenir une stratégie de ciblage.</li>
-          <li><b>Analyse de ventes e-commerce</b> — Nettoyage et exploration des transactions, KPI commerciaux (CA, panier moyen, top produits, saisonnalité, segments clients) et recommandations business. <br><b>Objectif :</b> Améliorer le pilotage et la performance.</li>
+          <li
+            data-fr="ONEPCI — Conception & administration d’application web — Conception fonctionnelle et technique (pages, workflows), développement (HTML/CSS/JavaScript/PHP), administration (comptes, droits, paramétrage) et support utilisateurs."
+            data-en="ONEPCI — Web app design & administration — Functional/technical design (pages, workflows), development (HTML/CSS/JavaScript/PHP), administration (accounts, access rights, configuration) and user support.">
+            <b>ONEPCI — Conception & administration d’application web</b> — Application web de gestion/portail d’informations. Conception fonctionnelle et technique (structure pages, workflows), développement (HTML/CSS/JavaScript/PHP), administration applicative (comptes, droits, paramétrage) et support utilisateurs.
+          </li>
+
+          <li
+            data-fr="Application de gestion d’école (SaaS) — Conception & administration — Recueil des besoins (rôles, processus), planification/coordination (roadmap, priorisation), administration (comptes, rôles, paramétrage) et support/formation."
+            data-en="School management application (SaaS) — Design & administration — Requirements gathering (roles, processes), planning/coordination (roadmap, prioritization), administration (accounts, roles, configuration) and user support/training.">
+            <b>Application de gestion d’école (SaaS) — Conception & administration</b> — Solution e-learning / gestion scolaire (inscriptions, suivi, utilisateurs). Recueil des besoins (utilisateurs, rôles, processus), planification et coordination (roadmap, priorisation), administration de l’application (comptes, rôles, paramétrage) et support/formation utilisateurs.
+          </li>
+
+          <li
+            data-fr="Base de données immobilière (SQL) — Modélisation relationnelle, requêtes (JOIN, agrégats, filtres), contrôles de cohérence. Objectif : produire des indicateurs fiables (prix, volumes, répartition, performance)."
+            data-en="Real-estate database (SQL) — Relational modeling, analysis queries (JOINs, aggregates, filters), consistency checks. Goal: produce reliable indicators (pricing, volumes, distribution, performance).">
+            <b>Base de données immobilière (SQL)</b> — Modélisation relationnelle, requêtes d’analyse (JOIN, agrégats, filtres), contrôles de cohérence. <br><b data-fr="Objectif :" data-en="Goal:">Objectif :</b> Produire des indicateurs fiables (prix, volumes, répartition, performance).
+          </li>
+
+          <li
+            data-fr="Tableau de bord Power BI (avancement de projets) — Modèle de données, mesures, indicateurs d’avancement/retard, navigation et filtres. Objectif : lecture management rapide et décision."
+            data-en="Power BI dashboard (project progress) — Data model, measures, progress/delay indicators, navigation and filters. Goal: fast management read and decision support.">
+            <b>Tableau de bord Power BI (avancement de projets)</b> — Construction d’un reporting de pilotage : modèle de données, mesures, indicateurs d’avancement/retard, navigation et filtres. <br><b data-fr="Objectif :" data-en="Goal:">Objectif :</b> Lecture management rapide et décision.
+          </li>
+
+          <li
+            data-fr="Étude sur l’eau potable — Préparation des données, analyse (tendances/écarts), visualisations et recommandations. Objectif : identifier les zones prioritaires et orienter l’action."
+            data-en="Drinking water study — Data preparation, analysis (trends/gaps), clear visuals and recommendations. Goal: identify priority areas and guide action.">
+            <b>Étude sur l’eau potable</b> — Préparation des données, analyse descriptive (tendances/écarts), visualisations claires et recommandations. <br><b data-fr="Objectif :" data-en="Goal:">Objectif :</b> Identifier les zones prioritaires et orienter l’action.
+          </li>
+
+          <li
+            data-fr="Étude de marché (R ou Python) — Structuration/collecte des données, analyse et segmentation, recommandations. Objectif : soutenir une stratégie de ciblage."
+            data-en="Market study (R or Python) — Data collection/structuring, analysis and segmentation, recommendations. Goal: support a targeting strategy.">
+            <b>Étude de marché (R ou Python)</b> — Structuration/collecte des données, analyse et segmentation (typologies), synthèse des opportunités/risques et recommandations. <br><b data-fr="Objectif :" data-en="Goal:">Objectif :</b> Soutenir une stratégie de ciblage.
+          </li>
+
+          <li
+            data-fr="Analyse de ventes e-commerce — Nettoyage et exploration des transactions, KPI (CA, panier moyen, top produits, saisonnalité, segments clients) et recommandations business. Objectif : améliorer le pilotage et la performance."
+            data-en="E-commerce sales analysis — Transaction cleaning and exploration, KPIs (revenue, average basket, top products, seasonality, customer segments) and business recommendations. Goal: improve performance and steering.">
+            <b>Analyse de ventes e-commerce</b> — Nettoyage et exploration des transactions, KPI commerciaux (CA, panier moyen, top produits, saisonnalité, segments clients) et recommandations business. <br><b data-fr="Objectif :" data-en="Goal:">Objectif :</b> Améliorer le pilotage et la performance.
+          </li>
         </ul>
       </div>
 
       <div class="card shadow">
-        <h2>Livrables associés</h2>
+        <h2 data-fr="Livrables associés" data-en="Associated deliverable">Livrables associés</h2>
         <ul class="links">
-          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener">Dashboards (PBIX)</a></li>
+          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener"
+                 data-fr="Dashboards (PBIX)" data-en="Dashboards (PBIX)">Dashboards (PBIX)</a></li>
         </ul>
-        <p class="small" style="margin-top:10px;">Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable).</p>
+        <p class="small" style="margin-top:10px;"
+           data-fr="Objectif : démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable)."
+           data-en="Goal: demonstrate senior level with evidence and handover (usable/maintainable).">
+          Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable).
+        </p>
       </div>
     </div>
 
     <!-- RECTANGLE 5 -->
     <div id="contact" class="grid section">
       <div class="card shadow">
-        <h2>Contacts</h2>
-        <p><b>Disponibilité :</b> Prise de poste possible avec <b>3 mois de préavis</b>.<br>
-           <b>Engagement :</b> Motivé pour contribuer rapidement au <b>pilotage KPI</b>, à la <b>data quality</b> et à l’<b>innovation</b> chez Aéroworld, avec des livrables <b>fiables, actionnables et transférables</b>.
+        <h2 data-fr="Contacts" data-en="Contact">Contacts</h2>
+        <p
+          data-fr="Disponibilité : prise de poste possible avec 3 mois de préavis. Engagement : motivé pour contribuer rapidement au pilotage KPI, à la data quality et à l’innovation chez Aéroworld, avec des livrables fiables, actionnables et transférables."
+          data-en="Availability: start date possible with a 3-month notice period. Commitment: motivated to contribute quickly to KPI steering, data quality, and innovation at Aeroworld, delivering reliable, actionable, and transferable outputs.">
+          <b>Disponibilité :</b> Prise de poste possible avec <b>3 mois de préavis</b>.<br>
+          <b>Engagement :</b> Motivé pour contribuer rapidement au <b>pilotage KPI</b>, à la <b>data quality</b> et à l’<b>innovation</b> chez Aéroworld, avec des livrables <b>fiables, actionnables et transférables</b>.
         </p>
       </div>
 
       <div class="card shadow">
-        <h2>Liens</h2>
+        <h2 data-fr="Liens" data-en="Links">Liens</h2>
         <ul class="links">
-          <li>Email : <b>j.b.brovou@gmail.com</b></li>
-          <li><a href="https://www.linkedin.com/in/bruno-brovou-645a12385/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><span data-fr="Email :" data-en="Email:">Email :</span> <b>j.b.brovou@gmail.com</b></li>
+          <li><a href="https://www.linkedin.com/in/bruno-brovou-645a12385/" target="_blank" rel="noopener"
+                 data-fr="LinkedIn" data-en="LinkedIn">LinkedIn</a></li>
         </ul>
-        <p class="small">© Bruno Brovou — Portfolio Data</p>
+        <p class="small" data-fr="© Bruno Brovou — Portfolio Data" data-en="© Bruno Brovou — Data Portfolio">© Bruno Brovou — Portfolio Data</p>
       </div>
     </div>
 
   </div>
+
+  <!-- LANG SWITCH -->
+  <script>
+    const DEFAULT_LANG = "fr";
+    const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+    const saved = localStorage.getItem("portfolio_lang");
+    const initial = saved || browserLang || DEFAULT_LANG;
+
+    const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
+
+    function setLang(lang){
+      allTranslatable().forEach(el => {
+        const val = el.dataset[lang];
+        if (val !== undefined) el.textContent = val;
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem("portfolio_lang", lang);
+      const sel = document.getElementById("langSelect");
+      if (sel) sel.value = lang;
+    }
+
+    setLang(initial);
+
+    document.getElementById("langSelect")?.addEventListener("change", (e) => {
+      setLang(e.target.value);
+    });
+  </script>
 </body>
 </html>
