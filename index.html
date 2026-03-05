@@ -133,7 +133,13 @@
         </div>
 
         <div class="btns">
-          <a href="CV Aéroworld.pdf" target="_blank" rel="noopener" data-fr="CV (PDF)" data-en="Resume (PDF)">CV (PDF)</a>
+          <a id="cvBtn"
+   href="CV-Aeroworld.pdf"
+   target="_blank" rel="noopener"
+   data-fr="CV (PDF)"
+   data-en="Resume (PDF)">
+  CV (PDF)
+</a>
           <a href="https://github.com/brovou" target="_blank" rel="noopener" data-fr="GitHub" data-en="GitHub">GitHub</a>
         </div>
       </div>
@@ -492,30 +498,47 @@
   </div>
 
   <!-- LANG SWITCH -->
-  <script>
-    const DEFAULT_LANG = "fr";
-    const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
-    const saved = localStorage.getItem("portfolio_lang");
-    const initial = saved || browserLang || DEFAULT_LANG;
+  <!-- LANG SWITCH + CV SWITCH -->
+<script>
+  const DEFAULT_LANG = "fr";
+  const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+  const saved = localStorage.getItem("portfolio_lang");
+  const initial = saved || browserLang || DEFAULT_LANG;
 
-    const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
+  
+  const CV_FR = "CV-Aeroworld.pdf";
+  const CV_EN = "CV-Aeroworld+.pdf";  
 
-    function setLang(lang){
-      allTranslatable().forEach(el => {
-        const val = el.dataset[lang];
-        if (val !== undefined) el.textContent = val;
-      });
-      document.documentElement.lang = lang;
-      localStorage.setItem("portfolio_lang", lang);
-      const sel = document.getElementById("langSelect");
-      if (sel) sel.value = lang;
-    }
+  const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
-    setLang(initial);
+  function updateLinksByLang(lang) {
+    const cv = document.getElementById("cvBtn");
+    if (cv) cv.href = (lang === "en") ? CV_EN : CV_FR;
+  }
 
-    document.getElementById("langSelect")?.addEventListener("change", (e) => {
-      setLang(e.target.value);
+  function setLang(lang) {
+    allTranslatable().forEach(el => {
+      const val = el.dataset[lang];
+      if (val !== undefined) el.textContent = val;
     });
-  </script>
+
+    document.documentElement.lang = lang;
+    localStorage.setItem("portfolio_lang", lang);
+
+    const sel = document.getElementById("langSelect");
+    if (sel) sel.value = lang;
+
+    // IMPORTANT : mettre à jour les liens dépendants de la langue
+    updateLinksByLang(lang);
+  }
+
+  // init
+  setLang(initial);
+
+  // change
+  document.getElementById("langSelect")?.addEventListener("change", (e) => {
+    setLang(e.target.value);
+  });
+</script>
 </body>
 </html>
