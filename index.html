@@ -183,6 +183,17 @@
         <ul class="links">
           <li><a href="Cahier des charges fonctionnel.pdf" target="_blank" rel="noopener"
                  data-fr="Cahier des charges fonctionnel (PDF)" data-en="Functional specifications (PDF)">Cahier des charges fonctionnel (PDF)</a></li>
+          <li>
+    <a class="langlink"
+       data-fr-href="Cahier des charges fonctionnel.pdf"
+       data-en-href="Functional specifications.pdf"
+       href="Cahier des charges fonctionnel.pdf"
+       target="_blank" rel="noopener"
+       data-fr="Cahier des charges fonctionnel (PDF)"
+       data-en="Functional specifications (PDF)">
+      Cahier des charges fonctionnel (PDF)
+    </a>
+  </li>
         </ul>
       </div>
     </div>
@@ -225,6 +236,17 @@
         <ul class="links">
           <li><a href="Analyse des besoins métiers.pdf" target="_blank" rel="noopener"
                  data-fr="Analyse des besoins métiers (PDF)" data-en="Business needs analysis (PDF)">Analyse des besoins métiers (PDF)</a></li>
+          <li>
+    <a class="langlink"
+       data-fr-href="Analyse des besoins métiers.pdf"
+       data-en-href="Business needs analysis.pdf"
+       href="Analyse des besoins métiers.pdf"
+       target="_blank" rel="noopener"
+       data-fr="Analyse des besoins métiers (PDF)"
+       data-en="Business needs analysis (PDF)">
+      Analyse des besoins métiers (PDF)
+    </a>
+  </li>
         </ul>
       </div>
     </div>
@@ -512,8 +534,16 @@
   const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
   function updateLinksByLang(lang) {
+    // 1) CV
     const cv = document.getElementById("cvBtn");
     if (cv) cv.href = (lang === "en") ? CV_EN : CV_FR;
+
+    // 2) Tous les liens qui ont une version FR/EN
+    document.querySelectorAll("a.langlink").forEach(a => {
+      const frHref = a.getAttribute("data-fr-href");
+      const enHref = a.getAttribute("data-en-href");
+      if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
+      });
   }
 
   function setLang(lang) {
