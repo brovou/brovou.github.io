@@ -106,9 +106,36 @@
   background:var(--blueSoft);
   border-color:#D6E4FF;
 }
-.dropdown:hover .dropdownContent{display:block}
+
 @media(max-width:900px){
   .dropdownContent{left:0; right:auto; width:100%; min-width:unset;}
+}
+
+    /* Dropdown stable (click) */
+.dropdown{position:relative; display:inline-flex; align-items:center}
+.dropdownContent{
+  display:none;
+  position:absolute;
+  top:44px;
+  right:0;
+  min-width:280px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 12px 28px rgba(16,24,40,.12);
+  padding:8px;
+  z-index:1000;
+}
+.dropdown.open .dropdownContent{display:block}
+
+/* zone “tampon” pour éviter le gap entre le bouton et le menu */
+.dropdownContent::before{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:0;
+  right:0;
+  height:10px;
 }
   </style>
 </head>
@@ -124,7 +151,7 @@
         <a href="#aeroworld" data-fr="Aéroworld Corporate" data-en="Aeroworld Corporate">Aéroworld Corporate</a>
         <a href="#demande" data-fr="Demande" data-en="Client Request">Demande</a>
         <a href="#livrables" data-fr="Livrables" data-en="Deliverables">Livrables</a>
-        <div class="dropdown">
+        <div class="dropdown" id="skillsMenu">
   <a href="#competences" class="dropbtn" data-fr="Compétences" data-en="Skills">Compétences</a>
 
   <div class="dropdownContent">
@@ -867,7 +894,8 @@
          
 </div>
 
-       
+     </div>
+    </div>   
      
 
       <div class="card shadow">
@@ -882,8 +910,7 @@
           Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable).
         </p>
       </div>
-    </div>
-    </div>
+   
     <!-- RECTANGLE 5 -->
     <div id="contact" class="grid section">
       <div class="card shadow">
