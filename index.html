@@ -134,7 +134,7 @@
 
         <div class="btns">
           <a id="cvBtn"
-   href="https://brovou.github.io/CV_FR.pdf"
+   href="https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf"
    target="_blank" rel="noopener"
    data-fr="CV (PDF)"
    data-en="Resume (PDF)">
@@ -875,15 +875,15 @@
   const initial = saved || browserLang || DEFAULT_LANG;
 
   
-  const CV_FR = "https://brovou.github.io/CV_FR.pdf";
-  const CV_EN = "https://brovou.github.io/CV_EN.pdf";  
+  const CV_FR = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
+  const CV_EN = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
 
   const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
   function updateLinksByLang(lang) {
     // 1) CV
     const cv = document.getElementById("cvBtn");
-    if (cv) cv.href = (lang === "en") ? CV_EN : CV_FR;
+    if (cv) cv.href = (lang === "en") ? CV_Brovou_Bruno_En : CV_Brovou_Bruno_Fr;
 
     // 2) Tous les liens qui ont une version FR/EN
     document.querySelectorAll("a.langlink").forEach(a => {
