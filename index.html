@@ -69,33 +69,6 @@
     select{background:#fff}
 
     /* Dropdown submenu (Compétences) */
-/* Dropdown stable (click) */
-.dropdown{position:relative; display:inline-flex; align-items:center}
-.dropdownContent{
-  display:none;
-  position:absolute;
-  top:44px;
-  right:0;
-  min-width:280px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:0 12px 28px rgba(16,24,40,.12);
-  padding:8px;
-  z-index:1000;
-}
-.dropdown.open .dropdownContent{display:block}
-
-/* zone “tampon” pour éviter le gap entre le bouton et le menu */
-.dropdownContent::before{
-  content:"";
-  position:absolute;
-  top:-10px;
-  left:0;
-  right:0;
-  height:10px;
-}
-
 /* Dropdown submenu (Compétences) */
 .dropdown{position:relative; display:inline-flex; align-items:center}
 .dropbtn{display:inline-flex; align-items:center}
@@ -134,6 +107,8 @@
   background:var(--blueSoft);
   border-color:#D6E4FF;
 }
+
+.dropdown:hover .dropdownContent{display:block}
 @media(max-width:900px){
   .dropdownContent{left:0; right:auto; width:100%; min-width:unset;}
 }
@@ -155,7 +130,7 @@
         <div class="dropdown" id="skillsMenu">
   <a href="#competences" class="dropbtn" data-fr="Compétences" data-en="Skills">Compétences</a>
 
-  <div class="dropdownContent" id="skillsMenu">
+  <div class="dropdownContent">
     <a href="#skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
     <a href="#skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
     <a href="#experiences" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
@@ -668,31 +643,6 @@
   document.getElementById("langSelect")?.addEventListener("change", (e) => {
     setLang(e.target.value);
   });
-
-   // Dropdown "Compétences" : ouverture au clic (stable)
-  const skillsMenu = document.getElementById("skillsMenu");
-  const skillsBtn  = document.getElementById("skillsBtn");
-
-  if (skillsMenu && skillsBtn) {
-    // ouvre/ferme au clic
-    skillsBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      skillsMenu.classList.toggle("open");
-    });
-
-    // clic dans le menu : on ferme après navigation
-    skillsMenu.querySelectorAll(".dropdownContent a").forEach(a => {
-      a.addEventListener("click", () => skillsMenu.classList.remove("open"));
-    });
-
-    // clic ailleurs : ferme
-    document.addEventListener("click", () => skillsMenu.classList.remove("open"));
-
-    // touche Escape : ferme
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") skillsMenu.classList.remove("open");
-    });
   }
 </script>
 </body>
