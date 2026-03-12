@@ -16,7 +16,7 @@
     .container{max-width:1100px;margin:0 auto;padding:22px 28px 28px;}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
     .shadow{box-shadow:0 8px 20px rgba(16,24,40,.06);}
-    .section{margin-top:14px; scroll-margin-top:90px;}
+    .section{margin-top:14px; scroll-margin-top:110px;}
     .grid{display:grid;grid-template-columns:1.7fr .9fr;gap:14px;margin-top:14px}
     @media(max-width:900px){.grid{grid-template-columns:1fr}.nav{position:static}.container{padding:16px}}
     h1{margin:0;color:var(--navy);font-size:28px;letter-spacing:-.2px}
@@ -452,7 +452,7 @@
 
 </div>
 
-    <!-- RECTANGLE 4 -->
+    
    <!-- RECTANGLE 4 -->
 <div id="competences" class="grid section">
 
@@ -461,7 +461,9 @@
     <h2 data-fr="Compétences & Expériences" data-en="Skills & Experience">Compétences & Expériences</h2>
 
     <!-- Sous-section : Hard skills -->
+    <div id="skills-tech" class="section">
     <h3 id="skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</h3>
+    </div>
     <ul>
       <li data-fr="SQL & Bases de données : Modélisation relationnelle, schémas (Tables/Relations), requêtes SQL (JOIN, agrégats, CTE), contrôles de cohérence."
           data-en="SQL & Databases: Relational modeling, schemas (Tables/Relationships), SQL queries (JOINs, aggregations, CTEs), consistency checks.">
@@ -496,7 +498,9 @@
     <div class="divider"></div>
 
     <!-- Sous-section : Soft skills -->
+    <div id="skills-soft" class="section">
     <h3 id="skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</h3>
+    </div>
     <ul>
       <li data-fr="Posture consultant orientée valeur : Reformuler le besoin, challenger, traduire en objectifs et KPI."
           data-en="Consulting mindset (value-driven): Reframe needs, challenge assumptions, translate into objectives and KPIs.">
