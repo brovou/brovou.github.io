@@ -69,15 +69,8 @@
     select{background:#fff}
 
     /* Dropdown submenu (Compétences) */
+/* Dropdown stable (click) */
 .dropdown{position:relative; display:inline-flex; align-items:center}
-.dropbtn{display:inline-flex; align-items:center}
-.dropbtn::after{
-  content:"▾";
-  margin-left:6px;
-  font-size:12px;
-  color:var(--muted);
-  font-weight:900;
-}
 .dropdownContent{
   display:none;
   position:absolute;
@@ -89,27 +82,20 @@
   border-radius:14px;
   box-shadow:0 12px 28px rgba(16,24,40,.12);
   padding:8px;
-  z-index:50;
+  z-index:1000;
 }
-.dropdownContent a{
-  display:block;
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid transparent;
-  font-weight:800;
-  font-size:13px;
-  color:var(--navy);
-  text-decoration:none;
-  white-space:nowrap;
-}
-.dropdownContent a:hover{
-  background:var(--blueSoft);
-  border-color:#D6E4FF;
+.dropdown.open .dropdownContent{display:block}
+
+/* zone “tampon” pour éviter le gap entre le bouton et le menu */
+.dropdownContent::before{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:0;
+  right:0;
+  height:10px;
 }
 
-@media(max-width:900px){
-  .dropdownContent{left:0; right:auto; width:100%; min-width:unset;}
-}
 
 
   </style>
@@ -129,7 +115,7 @@
         <div class="dropdown" id="skillsMenu">
   <a href="#competences" class="dropbtn" data-fr="Compétences" data-en="Skills">Compétences</a>
 
-  <div class="dropdownContent">
+  <div class="dropdownContent" id="skillsMenu">
     <a href="#skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
     <a href="#skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
     <a href="#experiences" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
@@ -434,457 +420,129 @@
 </div>
 
     <!-- RECTANGLE 4 -->
-    <div id="competences" class="grid section">
-      <div class="card shadow">
-        <h2 data-fr="Compétences & Expériences" data-en="Skills & Experience">Compétences & Expériences</h2>
+   <!-- RECTANGLE 4 -->
+<div id="competences" class="grid section">
 
-        <div class="card shadow">
-    <!-- Sous-section 1 -->
-        <h3 id="skills-tech" data-fr="Compétences techniques"
-      data-en="Hard skills">
-    Compétences techniques
-  </h3>
+  <!-- Colonne gauche -->
+  <div class="card shadow">
+    <h2 data-fr="Compétences & Expériences" data-en="Skills & Experience">Compétences & Expériences</h2>
 
-        <ul>
-          <li data-fr="SQL & Bases de données : Modélisation relationnelle, schémas (Tables/Relations), requêtes SQL (JOIN, agrégats, CTE), contrôles de cohérence."
-        data-en="SQL & Databases: Relational modeling, schemas (Tables/Relationships), SQL queries (JOINs, aggregations, CTEs), consistency checks.">
-      SQL & Bases de données : Modélisation relationnelle, schémas (Tables/Relations), requêtes SQL (JOIN, agrégats, CTE), contrôles de cohérence.
-    </li>
+    <!-- Sous-section : Hard skills -->
+    <h3 id="skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</h3>
+    <ul>
+      <li data-fr="SQL & Bases de données : Modélisation relationnelle, schémas (Tables/Relations), requêtes SQL (JOIN, agrégats, CTE), contrôles de cohérence."
+          data-en="SQL & Databases: Relational modeling, schemas (Tables/Relationships), SQL queries (JOINs, aggregations, CTEs), consistency checks.">
+        SQL & Bases de données : Modélisation relationnelle, schémas (Tables/Relations), requêtes SQL (JOIN, agrégats, CTE), contrôles de cohérence.
+      </li>
+      <li data-fr="Data preparation / Data quality : Nettoyage, valeurs manquantes, standardisation, détection d’anomalies, règles qualité, traçabilité des transformations."
+          data-en="Data preparation / Data quality: Cleaning, missing values, standardization, anomaly detection, quality rules, transformation traceability.">
+        Data preparation / Data quality : Nettoyage, valeurs manquantes, standardisation, détection d’anomalies, règles qualité, traçabilité des transformations.
+      </li>
+      <li data-fr="Analyse & KPI : Cadrage du besoin, définition d’indicateurs, segmentation, analyses comparatives, synthèse et recommandations actionnables."
+          data-en="Analysis & KPIs: Business scoping, KPI definition, segmentation, comparative analyses, synthesis and actionable recommendations.">
+        Analyse & KPI : Cadrage du besoin, définition d’indicateurs, segmentation, analyses comparatives, synthèse et recommandations actionnables.
+      </li>
+      <li data-fr="Dataviz & Dashboards (BI) : Conception de tableaux de bord (KPI, Filtres, Navigation), storytelling, restitution claire pour décideurs."
+          data-en="Dataviz & Dashboards (BI): Dashboard design (KPIs, Filters, Navigation), storytelling, clear executive-ready delivery.">
+        Dataviz & Dashboards (BI) : Conception de tableaux de bord (KPI, Filtres, Navigation), storytelling, restitution claire pour décideurs.
+      </li>
+      <li data-fr="Statistiques & Machine Learning : Préparation des features, entraînement/validation, comparaison de modèles, métriques d’évaluation, interprétation."
+          data-en="Statistics & Machine Learning: Feature preparation, training/validation, model comparison, evaluation metrics, interpretation.">
+        Statistiques & Machine Learning : Préparation des features, entraînement/validation, comparaison de modèles, métriques d’évaluation, interprétation.
+      </li>
+      <li data-fr="RGPD & Gouvernance : Minimisation, anonymisation/agrégation, principes de conformité et gestion des accès."
+          data-en="GDPR & Governance: Minimization, anonymization/aggregation, compliance principles and access management.">
+        RGPD & Gouvernance : Minimisation, anonymisation/agrégation, principes de conformité et gestion des accès.
+      </li>
+      <li data-fr="Gestion de projet data : Cahier des charges, critères d’acceptation, planification (Jalons), documentation & transfert (Guide/Runbook)."
+          data-en="Data project delivery: Functional specs, acceptance criteria, planning (Milestones), documentation & handover (Guide/Runbook).">
+        Gestion de projet data : Cahier des charges, critères d’acceptation, planification (Jalons), documentation & transfert (Guide/Runbook).
+      </li>
+    </ul>
 
-    <li data-fr="Data preparation / Data quality : Nettoyage, valeurs manquantes, standardisation, détection d’anomalies, règles qualité, traçabilité des transformations."
-        data-en="Data preparation / Data quality: Cleaning, missing values, standardization, anomaly detection, quality rules, transformation traceability.">
-      Data preparation / Data quality : Nettoyage, valeurs manquantes, standardisation, détection d’anomalies, règles qualité, traçabilité des transformations.
-    </li>
+    <div class="divider"></div>
 
-    <li data-fr="Analyse & KPI : Cadrage du besoin, définition d’indicateurs, segmentation, analyses comparatives, synthèse et recommandations actionnables."
-        data-en="Analysis & KPIs: Business scoping, KPI definition, segmentation, comparative analyses, synthesis and actionable recommendations.">
-      Analyse & KPI : Cadrage du besoin, définition d’indicateurs, segmentation, analyses comparatives, synthèse et recommandations actionnables.
-    </li>
+    <!-- Sous-section : Soft skills -->
+    <h3 id="skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</h3>
+    <ul>
+      <li data-fr="Posture consultant orientée valeur : Reformuler le besoin, challenger, traduire en objectifs et KPI."
+          data-en="Consulting mindset (value-driven): Reframe needs, challenge assumptions, translate into objectives and KPIs.">
+        Posture consultant orientée valeur : Reformuler le besoin, challenger, traduire en objectifs et KPI.
+      </li>
+      <li data-fr="Communication & storytelling : Expliquer clairement, structurer le message, adapter au public (tech/non-tech)."
+          data-en="Communication & storytelling: Explain clearly, structure the message, adapt to technical/non-technical audiences.">
+        Communication & storytelling : Expliquer clairement, structurer le message, adapter au public (tech/non-tech).
+      </li>
+      <li data-fr="Esprit de synthèse & priorisation : Aller à l’essentiel, prioriser par impact/effort, proposer des next steps."
+          data-en="Synthesis & prioritization: Focus on what matters, prioritize by impact/effort, propose next steps.">
+        Esprit de synthèse & priorisation : Aller à l’essentiel, prioriser par impact/effort, proposer des next steps.
+      </li>
+      <li data-fr="Rigueur & Qualité : Contrôles, traçabilité, cohérence des chiffres, documentation des hypothèses."
+          data-en="Rigor & Quality: Checks, traceability, consistent numbers, documented assumptions.">
+        Rigueur & Qualité : Contrôles, traçabilité, cohérence des chiffres, documentation des hypothèses.
+      </li>
+      <li data-fr="Pensée critique & Résolution de problèmes : Tester des hypothèses, identifier biais/risques/limites, proposer des solutions."
+          data-en="Critical thinking & Problem-solving: Test hypotheses, identify biases/risks/limits, propose solutions.">
+        Pensée critique & Résolution de problèmes : Tester des hypothèses, identifier biais/risques/limites, proposer des solutions.
+      </li>
+      <li data-fr="Organisation & Gestion de projet : Planifier, jalonner, gérer les priorités et le périmètre, respecter les délais."
+          data-en="Organization & Project delivery: Plan, set milestones, manage scope/priorities, meet deadlines.">
+        Organisation & Gestion de projet : Planifier, jalonner, gérer les priorités et le périmètre, respecter les délais.
+      </li>
+      <li data-fr="Collaboration & Co-construction : Travailler avec métier/IT, intégrer le feedback, itérer rapidement."
+          data-en="Collaboration & Co-creation: Work with business/IT, integrate feedback, iterate quickly.">
+        Collaboration & Co-construction : Travailler avec métier/IT, intégrer le feedback, itérer rapidement.
+      </li>
+      <li data-fr="Responsabilité & Ethique (RGPD) : Confidentialité, minimisation, gestion des accès, usage responsable de la donnée."
+          data-en="Accountability & Ethics (GDPR): Confidentiality, data minimization, access control, responsible data use.">
+        Responsabilité & Ethique (RGPD) : Confidentialité, minimisation, gestion des accès, usage responsable de la donnée.
+      </li>
+      <li data-fr="Autonomie & Apprentissage continu : Montée en compétence, veille, adoption rapide de nouveaux outils."
+          data-en="Autonomy & Continuous learning: Upskilling, watch, fast adoption of new tools.">
+        Autonomie & Apprentissage continu : Montée en compétence, veille, adoption rapide de nouveaux outils.
+      </li>
+    </ul>
 
-    <li data-fr="Dataviz & Dashboards (BI) : Conception de tableaux de bord (KPI, Filtres, Navigation), storytelling, restitution claire pour décideurs."
-        data-en="Dataviz & Dashboards (BI): Dashboard design (KPIs, Filters, Navigation), storytelling, clear executive-ready delivery.">
-      Dataviz & Dashboards (BI) : Conception de tableaux de bord (KPI, Filtres, Navigation), storytelling, restitution claire pour décideurs.
-    </li>
+    <div class="divider"></div>
 
-    <li data-fr="Statistiques & Machine Learning : Préparation des features, entraînement/validation, comparaison de modèles, métriques d’évaluation, interprétation."
-        data-en="Statistics & Machine Learning: Feature preparation, training/validation, model comparison, evaluation metrics, interpretation.">
-      Statistiques & Machine Learning : Préparation des features, entraînement/validation, comparaison de modèles, métriques d’évaluation, interprétation.
-    </li>
+    <!-- Expériences / case studies / etc. : garde tes blocs ici -->
+    <div id="experiences" class="section">
+      <h2 data-fr="Expériences professionnelles" data-en="Professional Experience">Expériences professionnelles</h2>
+      <!-- ... tes expériences ... -->
+    </div>
 
-    <li data-fr="RGPD & Gouvernance : Minimisation, anonymisation/agrégation, principes de conformité et gestion des accès."
-        data-en="GDPR & Governance: Minimization, anonymization/aggregation, compliance principles and access management.">
-      RGPD & Gouvernance : Minimisation, anonymisation/agrégation, principes de conformité et gestion des accès.
-    </li>
+    <div id="case-studies" class="section">
+      <h2 data-fr="Projets professionnels (Etudes de cas)" data-en="Professional Projects (Case studies)">Projets professionnels (Etudes de cas)</h2>
+      <!-- ... tes projets ... -->
+    </div>
 
-    <li data-fr="Gestion de projet data : Cahier des charges, critères d’acceptation, planification (Jalons), documentation & transfert (Guide/Runbook)."
-        data-en="Data project delivery: Functional specs, acceptance criteria, planning (Milestones), documentation & handover (Guide/Runbook).">
-      Gestion de projet data : Cahier des charges, critères d’acceptation, planification (Jalons), documentation & transfert (Guide/Runbook).
-    </li>
-        </ul>
+    <div id="reflective" class="section">
+      <h2 data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</h2>
+      <!-- ... ton texte ... -->
+    </div>
 
-        <div class="divider"></div>
-         <h3 id="skills-soft" data-fr="Compétences Générales"
-      data-en="Soft skills">
-    Compétences Générales
-  </h3>
+    <div id="references" class="section">
+      <h2 data-fr="Avis / Références professionnelles" data-en="Professional references">Avis / Références professionnelles</h2>
+      <!-- ... tes liens ... -->
+    </div>
 
-        
-        <ul>
-          <li data-fr="Posture consultant orientée valeur : Reformuler le besoin, challenger, traduire en objectifs et KPI."
-      data-en="Consulting mindset (value-driven): Reframe needs, challenge assumptions, translate into objectives and KPIs.">
-    Posture consultant orientée valeur : Reformuler le besoin, challenger, traduire en objectifs et KPI.
-  </li>
+  </div>
 
-  <li data-fr="Communication & storytelling : Expliquer clairement, structurer le message, adapter au public (tech/non-tech)."
-      data-en="Communication & storytelling: Explain clearly, structure the message, adapt to technical/non-technical audiences.">
-    Communication & storytelling : Expliquer clairement, structurer le message, adapter au public (tech/non-tech).
-  </li>
+  <!-- Colonne droite -->
+  <div class="card shadow">
+    <h2 data-fr="Livrables associés" data-en="Associated deliverables">Livrables associés</h2>
+    <ul class="links">
+      <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener"
+             data-fr="Dashboards (PBIX)" data-en="Dashboards (PBIX)">Dashboards (PBIX)</a></li>
+    </ul>
+    <p class="small" style="margin-top:10px;"
+       data-fr="Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable)."
+       data-en="Goal: Demonstrate senior level with evidence and handover (usable/maintainable).">
+      Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable).
+    </p>
+  </div>
 
-  <li data-fr="Esprit de synthèse & priorisation : Aller à l’essentiel, prioriser par impact/effort, proposer des next steps."
-      data-en="Synthesis & prioritization: Focus on what matters, prioritize by impact/effort, propose next steps.">
-    Esprit de synthèse & priorisation : Aller à l’essentiel, prioriser par impact/effort, proposer des next steps.
-  </li>
-
-  <li data-fr="Rigueur & Qualité : Contrôles, traçabilité, cohérence des chiffres, documentation des hypothèses."
-      data-en="Rigor & Quality: Checks, traceability, consistent numbers, documented assumptions.">
-    Rigueur & Qualité : Contrôles, traçabilité, cohérence des chiffres, documentation des hypothèses.
-  </li>
-
-  <li data-fr="Pensée critique & Résolution de problèmes : Tester des hypothèses, identifier biais/risques/limites, proposer des solutions."
-      data-en="Critical thinking & Problem-solving: Test hypotheses, identify biases/risks/limits, propose solutions.">
-    Pensée critique & Résolution de problèmes : Tester des hypothèses, identifier biais/risques/limites, proposer des solutions.
-  </li>
-
-  <li data-fr="Organisation & Gestion de projet : Planifier, jalonner, gérer les priorités et le périmètre, respecter les délais."
-      data-en="Organization & Project delivery: Plan, set milestones, manage scope/priorities, meet deadlines.">
-    Organisation & Gestion de projet : Planifier, jalonner, gérer les priorités et le périmètre, respecter les délais.
-  </li>
-
-  <li data-fr="Collaboration & Co-construction : Travailler avec métier/IT, intégrer le feedback, itérer rapidement."
-      data-en="Collaboration & Co-creation: Work with business/IT, integrate feedback, iterate quickly.">
-    Collaboration & Co-construction : Travailler avec métier/IT, intégrer le feedback, itérer rapidement.
-  </li>
-
-  <li data-fr="Responsabilité & Ethique (RGPD) : Confidentialité, minimisation, gestion des accès, usage responsable de la donnée."
-      data-en="Accountability & Ethics (GDPR): Confidentiality, data minimization, access control, responsible data use.">
-    Responsabilité & Ethique (RGPD) : Confidentialité, minimisation, gestion des accès, usage responsable de la donnée.
-  </li>
-
-  <li data-fr="Autonomie & Apprentissage continu : Montée en compétence, veille, adoption rapide de nouveaux outils."
-      data-en="Autonomy & Continuous learning: Upskilling, watch, fast adoption of new tools.">
-    Autonomie & Apprentissage continu : Montée en compétence, veille, adoption rapide de nouveaux outils.
-  </li>
-          
-        </ul>
-
-       <div id="experiences" class="section">
-  <h2 data-fr="Expériences professionnelles" data-en="Professional Experience">Expériences professionnelles</h2>
-  
-  <!-- EXPÉRIENCE 1  -->
-  
-  <h3 data-fr="Banque Africaine de Développement (BAD) — Enregistrement & Archivage | Administration & Reporting"
-      data-en="African Development Bank (AfDB) — Recording and Archiving | Platform Administration & KPI Reporting">
-    Banque Africaine de Développement (BAD) — Enregistrement & Archivage | Administration & Reporting
-  </h3>
-
-  <p data-fr="Contexte : Enregistrement  de toutes les demande de décaissement suivie de l'archivage électronique puis l'administration d’une plateforme multi-utilisateurs liée aux opérations (process et données), avec des enjeux de fiabilité, délais, gouvernance et qualité de service."
-     data-en="Context: Recording of all disbursement requests followed by electronic archiving and then administration of a multi-user operational platform with strong requirements on reliability, timelines, governance and service quality.">
-    Contexte : Enregistrement  de toutes les demande de décaissement suivie de l'archivage électronique puis administration d’une plateforme multi-utilisateurs liée aux opérations (process et données), avec des enjeux de fiabilité, délais, gouvernance et qualité de service.
-  </p>
-
-  <p data-fr="Objectifs : Veiller à la soumission des demandes de décaissment dans le système et sécuriser l’exécution des demandes, produire un reporting régulier (KPI), et améliorer l’efficacité via standardisation et automatisations."
-     data-en="Objectives: Ensuring the submission of disbursement requests in the system and secure request processing, deliver recurring KPI reporting, and improve efficiency through standardization and automation.">
-    Objectifs : Veiller à la soumission des demandes de décaissment dans le système et sécuriser l’exécution des demandes, produire un reporting régulier (KPI), et améliorer l’efficacité via standardisation et automatisations.
-  </p>
-
-  <p data-fr="Responsabilités & Autonomie : Administration fonctionnelle, support utilisateurs, contrôle qualité, production de reportings, coordination avec IT et parties prenantes."
-     data-en="Responsibilities & Autonomy: Functional administration, user support, data quality checks, reporting delivery, coordination with IT and stakeholders.">
-    Responsabilités & Autonomie : Administration fonctionnelle, support utilisateurs, contrôle qualité, production de reportings, coordination avec IT et parties prenantes.
-  </p>
-
-  <p><b data-fr="Compétences mobilisées :" data-en="Skills used:">Compétences mobilisées :</b>
-    <span data-fr="IT, cadrage KPI, data quality, Excel/Power Query, dataviz, documentation, conduite du changement."
-          data-en="IT, KPI scoping, data quality, Excel/Power Query, data visualization, documentation, change enablement.">
-      IT, cadrage KPI, data quality, Excel/Power Query, dataviz, documentation, conduite du changement.
-    </span>
-  </p>
-
-  <p><b data-fr="Résultats concrets :" data-en="Concrete outcomes:">Résultats concrets :</b>
-    <span data-fr="Reportings réguliers, amélioration de la lisibilité des indicateurs, standardisation de pratiques, réduction d’erreurs via contrôles."
-          data-en="Recurring reports, improved KPI readability, standardized practices, error reduction through controls.">
-      Reportings réguliers, amélioration de la lisibilité des indicateurs, standardisation de pratiques, réduction d’erreurs via contrôles.
-    </span>
-  </p>
-
-  <p class="small"><b data-fr="Justificatifs / Preuves :" data-en="Evidence / proofs:">Justificatifs / Preuves :</b></p>
-  <ul class="links">
-    <li><a href="https://brovou.github.io/Contrat.PDF" target="_blank" rel="noopener"
-           data-fr="Contrat" data-en="Contract">Contrat</a></li>
-  </ul>
-
-
-          <!-- EXPÉRIENCE 2  -->
-  <div class="divider"></div>
-  <h3 data-fr="Eden Corporate — Chef de projet | Developpeur Web"
-      data-en="Eden Corporate — Project Manager | Web Developer">
-    Eden Corporate — Chef de projet | Developpeur Web
-  </h3>
-
-  <p data-fr="Contexte : Présenter au Ministère de l'éducation nationale une application web pour les établissements scolaires, intégrant la gestion administrative, la génération des bulletins et le suivi individualisé des élèves."
-     data-en="Context: To present to the Ministry of National Education a web application for schools, integrating administrative management, report card generation and individualized student monitoring.">
-    Contexte : Présenter au Ministère de l'éducation nationale une application web pour les établissements scolaires, intégrant la gestion administrative, la génération des bulletins et le suivi individualisé des élèves.
-  </p>
-
-  <p data-fr="Objectifs : Concevoir et déployer une application web moderne et sécurisée pour uniformiser et digitaliser la gestion scolaire dans l’ensemble des établissements en Côte d’Ivoire."
-     data-en="Objectives: Design and deploy a modern and secure web application to standardize and digitize school management across all schools in Ivory Coast.">
-    Objectifs : Concevoir et déployer une application web moderne et sécurisée pour uniformiser et digitaliser la gestion scolaire dans l’ensemble des établissements en Côte d’Ivoire.
-  </p>
-
-  <p data-fr="Responsabilités & Autonomie : Recueil des besoins (rôles, processus), planification/coordination (roadmap, priorisation), administration (comptes, rôles, paramétrage), commercialiser le produit et support/formation."
-     data-en="Responsibilities & Autonomy: Gathering requirements (roles, processes), planning/coordination (roadmap, prioritization), administration (accounts, roles, configuration), marketing the product and support/training.">
-    Responsabilités & Autonomie : Recueil des besoins (rôles, processus), planification/coordination (roadmap, priorisation), administration (comptes, rôles, paramétrage), commercialiser le produit et support/formation.
-  </p>
-
-  <p><b data-fr="Compétences mobilisées :" data-en="Skills used:">Compétences mobilisées :</b>
-    <span data-fr="Analyse du besoin & cadrage fonctionnel, Conception & architecture de l’application, Développement web & base de données, Sécurité & conformité."
-          data-en="Needs analysis & functional scoping, Application design and architecture, Web & database development, Security & compliance.">
-      Analyse du besoin & cadrage fonctionnel, Conception & architecture de l’application, Développement web & base de données, Sécurité & conformité.
-    </span>
-  </p>
-
-  <p><b data-fr="Résultats concrets :" data-en="Concrete outcomes:">Résultats concrets :</b>
-    <span data-fr="Application web fonctionnelle, Base de données structurée et optimisée, Workflow complet de gestion scolaire, Sécurité & conformité, Documentation professionnelle, Démonstration & livrables visuels, Impact mesurable."
-          data-en="Functional web application, Structured and optimized database, Complete school management workflow, Security & compliance, Professional documentation, Demonstration & visual deliverables, Measurable impact.">
-      Application web fonctionnelle, Base de données structurée et optimisée, Workflow complet de gestion scolaire, Sécurité & conformité, Documentation professionnelle, Démonstration & livrables visuels, Impact mesurable.
-    </span>
-  </p>
-
-  <p class="small"><b data-fr="Justificatifs / Preuves :" data-en="Evidence / proofs:">Justificatifs / Preuves :</b></p>
-  <ul class="links">
-    <li><a href="https://brovou.github.io/Contrat logiciel eden educ BRUNO.pdf" target="_blank" rel="noopener"
-           data-fr="Contrat" data-en="Contract">Contrat</a></li>
-    <li><a href="https://github.com/brovou/saas-gestion-ecole" target="_blank" rel="noopener"
-           data-fr="Preuves" data-en="Evidence">Preuves</a></li>
-  </ul>
-
- <!-- EXPÉRIENCE 3  -->
-  <div class="divider"></div>
-  <h3 data-fr="Nogetec Group — WebMaster"
-      data-en="Nogetec Group — WebMaster">
-    Nogetec Group — WebMaster
-  </h3>
-
-  <p data-fr="Contexte : Developper des applications web/portail nécessitant structure, gestion des accès, paramétrage et support."
-     data-en="Context: Develop web/portal applications requiring structure, access management, configuration and support.">
-    Contexte : Developper des applications web/portail nécessitant structure, gestion des accès, paramétrage et support.
-  </p>
-
-  <p data-fr="Objectifs : Concevoir, déployer et assurer disponibilité, cohérence fonctionnelle, et qualité d’usage."
-     data-en="Objectives: Design, deploy and ensure availability, functional consistency, and quality of use.">
-    Objectifs : Concevoir, déployer et assurer disponibilité, cohérence fonctionnelle, et qualité d’usage.
-  </p>
-
-  <p data-fr="Responsabilités & Autonomie : Recueil des besoins (rôles, processus), planification/coordination (roadmap, priorisation), administration (comptes, rôles, paramétrage) et support/formation."
-     data-en="Responsibilities & Autonomy: Gathering requirements (roles, processes), planning/coordination (roadmap, prioritization), administration (accounts, roles, configuration)and support/training.">
-    Responsabilités & Autonomie : Recueil des besoins (rôles, processus), planification/coordination (roadmap, priorisation), administration (comptes, rôles, paramétrage), commercialiser le produit et support/formation.
-  </p>
-
-  <p><b data-fr="Compétences mobilisées :" data-en="Skills used:">Compétences mobilisées :</b>
-    <span data-fr="Analyse du besoin & cadrage fonctionnel, Conception & architecture de l’application, Développement web & base de données, Sécurité & conformité."
-          data-en="Needs analysis & functional scoping, Application design and architecture, Web & database development, Security & compliance.">
-      Analyse du besoin & cadrage fonctionnel, Conception & architecture de l’application, Développement web & base de données, Sécurité & conformité.
-    </span>
-  </p>
-
-  <p><b data-fr="Résultats concrets :" data-en="Concrete outcomes:">Résultats concrets :</b>
-    <span data-fr="Application web fonctionnelle, Base de données structurée et optimisée, Workflow complet de gestion scolaire, Sécurité & conformité, Documentation professionnelle, Démonstration & livrables visuels, Impact mesurable."
-          data-en="Functional web application, Structured and optimized database, Complete school management workflow, Security & compliance, Professional documentation, Demonstration & visual deliverables, Measurable impact.">
-      Application web fonctionnelle, Base de données structurée et optimisée, Workflow complet de gestion scolaire, Sécurité & conformité, Documentation professionnelle, Démonstration & livrables visuels, Impact mesurable.
-    </span>
-  </p>
-
-  <p class="small"><b data-fr="Justificatifs / Preuves :" data-en="Evidence / proofs:">Justificatifs / Preuves :</b></p>
-  <ul class="links">
-    <li><a href="https://brovou.github.io/Attestation de travail NOGETEC.pdf" target="_blank" rel="noopener"
-           data-fr="Attestation" data-en="Attestation">Attestation</a></li>
-
-  </ul>
-       </div>
-             <div id="case-studies" class="section">    
-  <h2 data-fr="Projets professionnels (Etudes de cas)"
-      data-en="Professional Projects (Case studies)">
-    Projets professionnels (Etudes de cas)
-  </h2>
-
-  <!-- 1) SQL Immobilier -->
-  <div class="divider"></div>
-  <h3 data-fr="Base de données immobilière (SQL)"
-      data-en="Real-estate database (SQL)">
-    Base de données immobilière (SQL)
-  </h3>
-  <p data-fr="Contexte : Besoin de structurer des données immobilières (Biens, Transactions, Localisation) pour produire des indicateurs fiables."
-     data-en="Context: Need to structure real-estate data (Properties, Transactions, Location) to produce reliable indicators.">
-    Contexte : Besoin de structurer des données immobilières (Biens, Transactions, Localisation) pour produire des indicateurs fiables.
-  </p>
-  <p data-fr="Objectifs : Modéliser une base relationnelle et écrire des requêtes d’analyse (JOIN, Agrégats) pour calculer des KPI."
-     data-en="Objectives: Design a relational model and write analytical SQL queries (JOINs, Aggregations) to compute KPIs.">
-    Objectifs : Modéliser une base relationnelle et écrire des requêtes d’analyse (JOIN, Agrégats) pour calculer des KPI.
-  </p>
-  <p data-fr="Réalisation : Schéma relationnel, Contraintes/Relations, Requêtes SQL réutilisables, Contrôles de cohérence."
-     data-en="Delivery: Relational schema, Constraints/Relationships, Reusable SQL queries, Consistency checks.">
-    Réalisation : Schéma relationnel, Contraintes/Relations, Requêtes SQL réutilisables, Contrôles de cohérence.
-  </p>
-  <p data-fr="Résultats : Base exploitable pour analyses récurrentes, KPI reproductibles (Prix, Volumes, Répartition), Fiabilité améliorée."
-     data-en="Outcomes: Analytics-ready database, Reproducible KPIs (Prices, Volumes, Distribution), Improved reliability.">
-    Résultats : Base exploitable pour analyses récurrentes, KPI reproductibles (Prix, Volumes, Répartition), Fiabilité améliorée.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/sql-immobilier" target="_blank" rel="noopener"
-           data-fr="Preuves (repo / scripts / schéma)"
-           data-en="Evidence (repo / scripts / schema)">Preuves (repo / scripts / schéma)</a></li>
-  </ul>
-
-  <!-- 2) Power BI PMO -->
-  <div class="divider"></div>
-  <h3 data-fr="Tableau de bord Power BI — Avancement de projets (PMO)"
-      data-en="Power BI dashboard — Project tracking (PMO)">
-    Tableau de bord Power BI — Avancement de projets (PMO)
-  </h3>
-  <p data-fr="Contexte : Besoin d’un pilotage clair d’un portefeuille de projets (Statuts, Jalons, Dérives, Priorités)."
-     data-en="Context: Need for clear steering of a project portfolio (Status, Milestones, Slippage, Priorities).">
-    Contexte : Besoin d’un pilotage clair d’un portefeuille de projets (Statuts, Jalons, Dérives, Priorités).
-  </p>
-  <p data-fr="Objectifs : Produire un dashboard décisionnel (Vue synthèse + détail) pour identifier rapidement les projets à risque."
-     data-en="Objectives: Deliver a decision-ready dashboard (Executive + detail views) to quickly identify projects at risk.">
-    Objectifs : Produire un dashboard décisionnel (Vue synthèse + détail) pour identifier rapidement les projets à risque.
-  </p>
-  <p data-fr="Réalisation : Modèle de données, mesures DAX, KPI (retard, avancement), navigation, filtres et UX."
-     data-en="Delivery: Data model, DAX measures, KPIs (delay, progress), navigation, filters and UX.">
-    Réalisation : Modèle de données, mesures DAX, KPI (retard, avancement), navigation, filtres et UX.
-  </p>
-  <p data-fr="Résultats : Lecture management rapide, Alertes sur dérives, Suivi des jalons et priorisation."
-     data-en="Outcomes: Fast management read, Slippage alerts, Milestone tracking and prioritization.">
-    Résultats : Lecture management rapide, Alertes sur dérives, Suivi des jalons et priorisation.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/powerbi-pmo" target="_blank" rel="noopener"
-           data-fr="Preuves (PBIX / captures / doc)"
-           data-en="Evidence (PBIX / screenshots / doc)">Preuves (PBIX / captures / doc)</a></li>
-  </ul>
-
-  <!-- 3) Eau potable -->
-  <div class="divider"></div>
-  <h3 data-fr="Étude — Accès à l’eau potable"
-      data-en="Study — Drinking water access">
-    Étude — accès à l’eau potable
-  </h3>
-  <p data-fr="Contexte : Analyse nécessaire pour comprendre les disparités et orienter les priorités d’action."
-     data-en="Context: Analysis required to understand disparities and support action prioritization.">
-    Contexte : Analyse nécessaire pour comprendre les disparités et orienter les priorités d’action.
-  </p>
-  <p data-fr="Objectifs : Préparer les données, Analyser tendances/Ecarts, et produire des recommandations décisionnelles."
-     data-en="Objectives: Prepare data, Analyze trends/Gaps, and provide decision-oriented recommendations.">
-    Objectifs : Préparer les données, Analyser tendances/Ecarts, et produire des recommandations décisionnelles.
-  </p>
-  <p data-fr="Réalisation : Nettoyage, analyses descriptives, visualisations claires, synthèse orientée action."
-     data-en="Delivery: Cleaning, descriptive analysis, clear visualizations, action-oriented synthesis.">
-    Réalisation : Nettoyage, analyses descriptives, visualisations claires, synthèse orientée action.
-  </p>
-  <p data-fr="Résultats : Identification de zones prioritaires, Lecture claire des écarts, Recommandations actionnables."
-     data-en="Outcomes: Priority areas identified, Clear gap analysis, Actionable recommendations.">
-    Résultats : Identification de zones prioritaires, Lecture claire des écarts, Recommandations actionnables.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/eau-potable" target="_blank" rel="noopener"
-           data-fr="Preuves (rapport / analyses / visuels)"
-           data-en="Evidence (report / analysis / visuals)">Preuves (rapport / analyses / visuels)</a></li>
-  </ul>
-
-  <!-- 4) Étude de marché -->
-  <div class="divider"></div>
-  <h3 data-fr="Étude de marché (R ou Python)"
-      data-en="Market study (R or Python)">
-    Étude de marché (R ou Python)
-  </h3>
-  <p data-fr="Contexte : Besoin d’orienter une stratégie (ciblage, opportunités/risques) à partir de données."
-     data-en="Context: Need to support strategy (Targeting, Opportunities/Risks) using data.">
-    Contexte : Besoin d’orienter une stratégie (Ciblage, Opportunités/Risques) à partir de données.
-  </p>
-  <p data-fr="Objectifs : Structurer les données, segmenter, et formuler une recommandation exploitable."
-     data-en="Objectives: Structure data, perform segmentation, and deliver an actionable recommendation.">
-    Objectifs : Structurer les données, segmenter, et formuler une recommandation exploitable.
-  </p>
-  <p data-fr="Réalisation : Préparation, Exploration, Segmentation/Typologies, Synthèse des opportunités et risques."
-     data-en="Delivery: Preparation, Exploration, Segmentation/Typologies, Synthesis of opportunities and risks.">
-    Réalisation : Préparation, Exploration, Segmentation/Typologies, Synthèse des opportunités et risques.
-  </p>
-  <p data-fr="Résultats : Segments exploitables, Insights clés, Recommandations de positionnement/Ciblage."
-     data-en="Outcomes: Usable segments, Key insights, Positioning/Targeting recommendations.">
-    Résultats : Segments exploitables, Insights clés, Recommandations de positionnement/Ciblage.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/analyses-metier" target="_blank" rel="noopener"
-           data-fr="Preuves (notebook / rapport / slides)"
-           data-en="Evidence (notebook / report / slides)">Preuves (notebook / rapport / slides)</a></li>
-  </ul>
-
-  <!-- 5) Analyse ventes e-commerce -->
-  <div class="divider"></div>
-  <h3 data-fr="Analyse de ventes e-commerce"
-      data-en="E-commerce sales analysis">
-    Analyse de ventes e-commerce
-  </h3>
-  <p data-fr="Contexte : Besoin de piloter la performance commerciale à partir des transactions."
-     data-en="Context: Need to steer commercial performance using transaction data.">
-    Contexte : Besoin de piloter la performance commerciale à partir des transactions.
-  </p>
-  <p data-fr="Objectifs : Calculer des KPI (CA, Panier moyen, Top produits, Saisonnalité, Segments clients) et proposer des leviers."
-     data-en="Objectives: Compute KPIs (Revenue, avg basket, Top products, Seasonality, Customer segments) and propose levers.">
-    Objectifs : Calculer des KPI (CA, Panier moyen, Top produits, Saisonnalité, Segments clients) et proposer des leviers.
-  </p>
-  <p data-fr="Réalisation : Préparation des données, analyses, visualisations, recommandations business."
-     data-en="Delivery: Data preparation, analysis, visualizations, business recommendations.">
-    Réalisation : Préparation des données, analyses, visualisations, recommandations business.
-  </p>
-  <p data-fr="Résultats : Pilotage clarifié, opportunités identifiées (Produits, Promos, Fidélisation), recommandations actionnables."
-     data-en="Outcomes: Clearer steering, opportunities identified (Products, Promos, Retention), actionable recommendations.">
-    Résultats : Pilotage clarifié, opportunités identifiées (Produits, Promos, Fidélisation), recommandations actionnables.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/analyses-metier" target="_blank" rel="noopener"
-           data-fr="Preuves (notebook / rapport / dashboards)"
-           data-en="Evidence (notebook / report / dashboards)">Preuves (notebook / rapport / dashboards)</a></li>
-  </ul>
-
-  <!-- 6) Détection faux billets (ML) -->
-  <div class="divider"></div>
-  <h3 data-fr="Détection de faux billets (R/Python — ML)"
-      data-en="Counterfeit banknote detection (R/Python — ML)">
-    Détection de faux billets (R/Python — ML)
-  </h3>
-  <p data-fr="Contexte : Classifier des billets authentiques vs contrefaits à partir de caractéristiques mesurées."
-     data-en="Context: Classify banknotes as genuine vs counterfeit using measured features.">
-    Contexte : Classifier des billets authentiques vs contrefaits à partir de caractéristiques mesurées.
-  </p>
-  <p data-fr="Objectifs : Préparer les données, entraîner/comparer des modèles, évaluer et recommander un usage (Seuil, Limites)."
-     data-en="Objectives: Prepare data, train/compare models, evaluate, and recommend usage (Threshold, Limitations).">
-    Objectifs : Préparer les données, entraîner/comparer des modèles, évaluer et recommander un usage (Seuil, Limites).
-  </p>
-  <p data-fr="Réalisation : Ingénierie des fonctionnalités, entraînement, validation, métriques (précision/recall, matrice de confusion, ROC-AUC)."
-     data-en="Delivery: Feature engineering, training, validation, metrics (precision/recall, confusion matrix, ROC-AUC).">
-    Réalisation : Ingénierie des fonctionnalités, entraînement, validation, métriques (précision/recall, matrice de confusion, ROC-AUC).
-  </p>
-  <p data-fr="Résultats : Modèle retenu selon objectif métier (Réduire faux négatifs), interprétation et recommandations de déploiement."
-     data-en="Outcomes: Model selected based on business goal (Reduce false negatives), interpretation and deployment recommendations.">
-    Résultats : Modèle retenu selon objectif métier (Réduire faux négatifs), interprétation et recommandations de déploiement.
-  </p>
-  <ul class="links">
-    <li><a href="https://github.com/brovou/ml-faux-billets" target="_blank" rel="noopener"
-           data-fr="Preuves (notebook / rapport / résultats)"
-           data-en="Evidence (notebook / report / results)">Preuves (notebook / rapport / résultats)</a></li>
-  </ul>
 </div>
-            <div id="reflective" class="section">
-  <h2 data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</h2>
-
-  <p data-fr="Sur ces expériences, j’ai renforcé ma posture de consultant data : partir du besoin, formaliser des indicateurs, sécuriser la qualité, livrer des dashboards lisibles et assurer le transfert. La formation OpenClassrooms m’a permis d’industrialiser ma démarche (cadrage, spécifications, KPI, dataviz, documentation). Les principales difficultés ont porté sur la cohérence des données, la standardisation des définitions KPI et l’adoption des livrables ; je les ai traitées par des règles qualité, un dictionnaire KPI, un runbook de mise à jour et une vidéo de formation. Cette démarche a renforcé mon autonomie et ma capacité à livrer des solutions actionnables et maintenables."
-     data-en="Across these experiences, I strengthened a data consulting mindset: start from business needs, define KPIs, ensure data quality, deliver readable dashboards, and enable adoption through handover. The OpenClassrooms program helped me industrialize my approach (scoping, specs, KPIs, dataviz, documentation). Key challenges were data consistency, KPI definition standardization, and adoption; I addressed them with quality rules, a KPI dictionary, a weekly runbook and a training video. This project reinforced my autonomy and my ability to deliver actionable, maintainable solutions.">
-    Sur ces expériences, j’ai renforcé ma posture de consultant data : partir du besoin, formaliser des indicateurs, sécuriser la qualité, livrer des dashboards lisibles et assurer le transfert. La formation OpenClassrooms m’a permis d’industrialiser ma démarche (cadrage, spécifications, KPI, dataviz, documentation). Les principales difficultés ont porté sur la cohérence des données, la standardisation des définitions KPI et l’adoption des livrables ; je les ai traitées par des règles qualité, un dictionnaire KPI, un runbook de mise à jour et une vidéo de formation. Cette démarche a renforcé mon autonomie et ma capacité à livrer des solutions actionnables et maintenables.
-  </p>
-</div>
-
-                    <div id="references" class="section">
-  <h2 data-fr="Avis / Références professionnelles" data-en="Professional references">Avis / Références professionnelles</h2>
-  <ul class="links">
-    <li><a href="https://brovou.github.io/Evaluation.pdf" target="_blank" rel="noopener"
-           data-fr="Evaluation (PDF)" data-en="Evaluation (PDF)">
-      Evaluation (PDF)
-    </a></li>
-    
-  </ul>
-                    </div>
- 
-
-
-         
-</div>
-
-     </div>
-    </div>   
-     
-
-      <div class="card shadow">
-        <h2 data-fr="Livrables associés" data-en="Associated deliverable">Livrables associés</h2>
-        <ul class="links">
-          <li><a href="Dashbords - Profil & Veille T&M.pbix" target="_blank" rel="noopener"
-                 data-fr="Dashboards (PBIX)" data-en="Dashboards (PBIX)">Dashboards (PBIX)</a></li>
-        </ul>
-        <p class="small" style="margin-top:10px;"
-           data-fr="Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable)."
-           data-en="Goal: Demonstrate senior level with evidence and handover (usable/maintainable).">
-          Objectif : Démontrer mon niveau confirmé, avec preuves et transfert (utilisable/maintenable).
-        </p>
-      </div>
    
     <!-- RECTANGLE 5 -->
     <div id="contact" class="grid section">
