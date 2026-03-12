@@ -866,8 +866,8 @@
   const initial = saved || browserLang || DEFAULT_LANG;
 
   
-  const CV_FR = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
-  const CV_EN = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
+  const CV_Brovou_Bruno_Fr = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
+  const CV_Brovou_Bruno_En = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
 
   const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
@@ -887,7 +887,12 @@
   function setLang(lang) {
     allTranslatable().forEach(el => {
       const val = el.dataset[lang];
-      if (val !== undefined) el.textContent = val;
+      if (val === undefined) return;
+
+      // ✅ Préserve le HTML existant (<b>, <br>, etc.)
+      const hasHtml = el.innerHTML.includes("<") || el.querySelector("*");
+      if (hasHtml) el.innerHTML = val;
+      else el.textContent = val;
     });
 
     document.documentElement.lang = lang;
@@ -896,7 +901,6 @@
     const sel = document.getElementById("langSelect");
     if (sel) sel.value = lang;
 
-    // IMPORTANT : mettre à jour les liens dépendants de la langue
     updateLinksByLang(lang);
   }
 
