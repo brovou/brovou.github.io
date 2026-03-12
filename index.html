@@ -81,7 +81,18 @@
         <a href="#aeroworld" data-fr="Aéroworld Corporate" data-en="Aeroworld Corporate">Aéroworld Corporate</a>
         <a href="#demande" data-fr="Demande" data-en="Client Request">Demande</a>
         <a href="#livrables" data-fr="Livrables" data-en="Deliverables">Livrables</a>
-        <a href="#competences" data-fr="Compétences" data-en="Skills">Compétences</a>
+        <div class="dropdown">
+  <a href="#competences" class="dropbtn" data-fr="Compétences" data-en="Skills">Compétences</a>
+
+  <div class="dropdownContent">
+    <a href="#skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
+    <a href="#skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
+    <a href="#experiences" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
+    <a href="#case-studies" data-fr="Projets professionnels (Études de cas)" data-en="Professional projects (case studies)">Projets professionnels (Études de cas)</a>
+    <a href="#reflective" data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</a>
+    <a href="#references" data-fr="Avis / Références professionnelles" data-en="References">Avis / Références professionnelles</a>
+  </div>
+</div>
         <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
 
         <div style="display:flex; gap:8px; align-items:center; margin-left:6px;">
@@ -382,7 +393,8 @@
       <div class="card shadow">
         <h2 data-fr="Compétences & Expériences" data-en="Skills & Experience">Compétences & Expériences</h2>
 
-        
+        <div class="card shadow">
+    <!-- Sous-section 1 -->
         <h3 data-fr="Compétences techniques"
       data-en="Hard skills">
     Compétences techniques
@@ -480,11 +492,11 @@
           
         </ul>
 
-        <div class="card shadow section" id="experiences">
+       <div id="experiences" class="section">
   <h2 data-fr="Expériences professionnelles" data-en="Professional Experience">Expériences professionnelles</h2>
   
   <!-- EXPÉRIENCE 1  -->
-  <div class="divider"></div>
+  
   <h3 data-fr="Banque Africaine de Développement (BAD) — Enregistrement & Archivage | Administration & Reporting"
       data-en="African Development Bank (AfDB) — Recording and Archiving | Platform Administration & KPI Reporting">
     Banque Africaine de Développement (BAD) — Enregistrement & Archivage | Administration & Reporting
@@ -612,8 +624,8 @@
            data-fr="Attestation" data-en="Attestation">Attestation</a></li>
 
   </ul>
-
-                 
+       </div>
+             <div id="case-studies" class="section">    
   <h2 data-fr="Projets professionnels (Etudes de cas)"
       data-en="Professional Projects (Case studies)">
     Projets professionnels (Etudes de cas)
@@ -786,17 +798,17 @@
            data-fr="Preuves (notebook / rapport / résultats)"
            data-en="Evidence (notebook / report / results)">Preuves (notebook / rapport / résultats)</a></li>
   </ul>
-
-            <div class="divider"></div>
+</div>
+            <div id="reflective" class="section">
   <h2 data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</h2>
 
   <p data-fr="Sur ces expériences, j’ai renforcé ma posture de consultant data : partir du besoin, formaliser des indicateurs, sécuriser la qualité, livrer des dashboards lisibles et assurer le transfert. La formation OpenClassrooms m’a permis d’industrialiser ma démarche (cadrage, spécifications, KPI, dataviz, documentation). Les principales difficultés ont porté sur la cohérence des données, la standardisation des définitions KPI et l’adoption des livrables ; je les ai traitées par des règles qualité, un dictionnaire KPI, un runbook de mise à jour et une vidéo de formation. Cette démarche a renforcé mon autonomie et ma capacité à livrer des solutions actionnables et maintenables."
      data-en="Across these experiences, I strengthened a data consulting mindset: start from business needs, define KPIs, ensure data quality, deliver readable dashboards, and enable adoption through handover. The OpenClassrooms program helped me industrialize my approach (scoping, specs, KPIs, dataviz, documentation). Key challenges were data consistency, KPI definition standardization, and adoption; I addressed them with quality rules, a KPI dictionary, a weekly runbook and a training video. This project reinforced my autonomy and my ability to deliver actionable, maintainable solutions.">
     Sur ces expériences, j’ai renforcé ma posture de consultant data : partir du besoin, formaliser des indicateurs, sécuriser la qualité, livrer des dashboards lisibles et assurer le transfert. La formation OpenClassrooms m’a permis d’industrialiser ma démarche (cadrage, spécifications, KPI, dataviz, documentation). Les principales difficultés ont porté sur la cohérence des données, la standardisation des définitions KPI et l’adoption des livrables ; je les ai traitées par des règles qualité, un dictionnaire KPI, un runbook de mise à jour et une vidéo de formation. Cette démarche a renforcé mon autonomie et ma capacité à livrer des solutions actionnables et maintenables.
   </p>
+</div>
 
-
-                      <div class="divider"></div>
+                    <div id="references" class="section">
   <h2 data-fr="Avis / Références professionnelles" data-en="Professional references">Avis / Références professionnelles</h2>
   <ul class="links">
     <li><a href="https://brovou.github.io/Evaluation.pdf" target="_blank" rel="noopener"
@@ -805,11 +817,13 @@
     </a></li>
     
   </ul>
+                    </div>
  
 
 
          
 </div>
+    </div>
 
 <div class="divider"></div>
 
