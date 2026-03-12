@@ -68,10 +68,9 @@
     .navLinks a:hover{border-color:#C7D2FE}
     select{background:#fff}
 
-    /* Dropdown submenu (Compétences) */
-/* Dropdown submenu (Compétences) */
+    /* ===== Dropdown (Compétences) : stable (click + hover) ===== */
 .dropdown{position:relative; display:inline-flex; align-items:center}
-.dropbtn{display:inline-flex; align-items:center}
+.dropbtn{display:inline-flex; align-items:center; cursor:pointer}
 .dropbtn::after{
   content:"▾";
   margin-left:6px;
@@ -79,6 +78,8 @@
   color:var(--muted);
   font-weight:900;
 }
+
+/* menu */
 .dropdownContent{
   display:none;
   position:absolute;
@@ -90,8 +91,10 @@
   border-radius:14px;
   box-shadow:0 12px 28px rgba(16,24,40,.12);
   padding:8px;
-  z-index:50;
+  z-index:9999;
 }
+
+/* liens */
 .dropdownContent a{
   display:block;
   padding:10px 12px;
@@ -108,7 +111,22 @@
   border-color:#D6E4FF;
 }
 
+/* Hover (optionnel) */
 .dropdown:hover .dropdownContent{display:block}
+
+/* Click (prioritaire) */
+.dropdown.open .dropdownContent{display:block}
+
+/* Zone "tampon" invisible pour éviter fermeture quand on descend */
+.dropdownContent::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-10px;
+  height:10px;
+}
+
+/* Mobile */
 @media(max-width:900px){
   .dropdownContent{left:0; right:auto; width:100%; min-width:unset;}
 }
@@ -591,12 +609,10 @@
   <!-- LANG SWITCH -->
   <!-- LANG SWITCH + CV SWITCH -->
 <script>
-  const DEFAULT_LANG = "fr";
+ const DEFAULT_LANG = "fr";
   const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
   const saved = localStorage.getItem("portfolio_lang");
   const initial = saved || browserLang || DEFAULT_LANG;
-  const hasHtml = el.innerHTML.includes("<") || el.querySelector("*");
-
   
   const CV_Brovou_Bruno_Fr = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
   const CV_Brovou_Bruno_En = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
@@ -608,22 +624,22 @@
     const cv = document.getElementById("cvBtn");
     if (cv) cv.href = (lang === "en") ? CV_Brovou_Bruno_En : CV_Brovou_Bruno_Fr;
 
-    // 2) Tous les liens qui ont une version FR/EN
+    /// Liens FR/EN
     document.querySelectorAll("a.langlink").forEach(a => {
       const frHref = a.getAttribute("data-fr-href");
       const enHref = a.getAttribute("data-en-href");
       if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
-      });
+    });
   }
 
-  function setLang(lang) {
+    function setLang(lang) {
     allTranslatable().forEach(el => {
       const val = el.dataset[lang];
       if (val === undefined) return;
 
-      // ✅ Préserve le HTML existant (<b>, <br>, etc.)
-      const hasHtml = el.innerHTML.includes("<") || el.querySelector("*");
-      if (hasHtml) el.innerHTML = val;
+      // Si tu veux permettre du HTML dans data-fr/data-en : mets des <br> etc.
+      const hasMarkup = /<[^>]+>/.test(val);
+      if (hasMarkup) el.innerHTML = val;
       else el.textContent = val;
     });
 
@@ -643,6 +659,34 @@
   document.getElementById("langSelect")?.addEventListener("change", (e) => {
     setLang(e.target.value);
   });
+</script>
+  <script>
+  // ===== Dropdown stable au clic =====
+  (function(){
+    const menu = document.getElementById("skillsMenu");
+    if(!menu) return;
+
+    const btn = menu.querySelector(".dropbtn");
+    const panel = menu.querySelector(".dropdownContent");
+
+    // Ouvrir/fermer au clic sur "Compétences"
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();       // évite le jump immédiat vers #competences
+      e.stopPropagation();
+      menu.classList.toggle("open");
+    });
+
+    // Cliquer dans le menu ne ferme pas
+    panel.addEventListener("click", (e) => e.stopPropagation());
+
+    // Cliquer ailleurs ferme
+    document.addEventListener("click", () => menu.classList.remove("open"));
+
+    // ESC ferme
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") menu.classList.remove("open");
+    });
+  })();
 </script>
 </body>
 </html>
