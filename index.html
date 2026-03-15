@@ -739,30 +739,30 @@ html, body { max-width:100%; overflow-x:hidden; }
 
   <!-- LANG SWITCH -->
 <script>
- const DEFAULT_LANG = "fr";
-  const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
-  const saved = localStorage.getItem("portfolio_lang");
-  const initial = saved || browserLang || DEFAULT_LANG;
+ (function () {
+    const DEFAULT_LANG = "fr";
+    const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+    const saved = localStorage.getItem("portfolio_lang");
+    const initial = saved || browserLang || DEFAULT_LANG;
   
   const CV_Brovou_Bruno_Fr = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
   const CV_Brovou_Bruno_En = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
 
-  const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
+   const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
-  function updateLinksByLang(lang) {
-    // 1) CV
-    const cv = document.getElementById("cvBtn");
+    function updateLinksByLang(lang) {
+      // CV
+      const cv = document.getElementById("cvBtn");
     if (cv) cv.href = (lang === "en") ? CV_Brovou_Bruno_En : CV_Brovou_Bruno_Fr;
+// Liens qui ont 2 href (data-fr-href / data-en-href)
+      document.querySelectorAll("a.langlink").forEach(a => {
+        const frHref = a.getAttribute("data-fr-href");
+        const enHref = a.getAttribute("data-en-href");
+        if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
+      });
+    }
 
-    /// Liens FR/EN
-    document.querySelectorAll("a.langlink").forEach(a => {
-      const frHref = a.getAttribute("data-fr-href");
-      const enHref = a.getAttribute("data-en-href");
-      if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
-    });
-  }
-
-     function setLang(lang) {
+ function setLang(lang) {
       allTranslatable().forEach(el => {
         const val = el.dataset[lang];
         if (val === undefined) return;
