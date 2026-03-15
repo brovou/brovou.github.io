@@ -171,13 +171,16 @@ html, body { max-width:100%; overflow-x:hidden; }
   .dropdownContent{ left:0; right:auto; width:100%; min-width:unset; }
 }
 
-/* === LIEN "Retour au menu" en bas des rectangles === */
+/* Le bloc (card) devient le conteneur de positionnement */
+.card { position: relative; }
+
+/* Bouton "Retour au menu" positionné en bas à droite */
 .backMenu{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:14px;
-  padding:10px 12px;
+  position:absolute;
+  right:18px;      /* ajuste si besoin */
+  bottom:14px;     /* ajuste si besoin */
+  margin:0;        /* important */
+  padding:8px 12px;
   border-radius:12px;
   border:1px dashed #C7D2FE;
   background:#F4F7FF;
@@ -185,8 +188,11 @@ html, body { max-width:100%; overflow-x:hidden; }
   font-weight:800;
   text-decoration:none;
   font-size:13px;
+  z-index:5;
 }
-.backMenu:hover{ filter:brightness(.98); }
+
+/* Evite que le texte passe sous le bouton */
+.card.hasBackMenu{ padding-bottom:52px; }
   </style>
 </head>
 
@@ -354,7 +360,7 @@ html, body { max-width:100%; overflow-x:hidden; }
         <span class="pill" data-fr="Sécurité • Fiabilité • Performance" data-en="Safety • Reliability • Performance">Sécurité • Fiabilité • Performance</span>
         <span class="pill" data-fr="Conformité • Traçabilité" data-en="Compliance • Traceability">Conformité • Traçabilité</span>
         <span class="pill" data-fr="Gouvernance KPI" data-en="KPI Governance">Gouvernance KPI</span>
-        <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
+         <a href="#topNav" class="backMenu" data-fr="↑ Retour au menu" data-en="↑ Back to menu">↑ Retour au menu</a>
       </div>
 
       <div class="card shadow">
@@ -407,7 +413,7 @@ html, body { max-width:100%; overflow-x:hidden; }
            data-en="Work performed: Scoping, KPI definition, data rules, prioritization, and an evidence-based approach.">
           <b>Activités menées :</b> Cadrage, définition des KPI, règles de données, priorisation et logique de preuve.
         </p>
-        <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
+        <a href="#topNav" class="backMenu" data-fr="↑ Retour au menu" data-en="↑ Back to menu">↑ Retour au menu</a>
       </div>
 
       <div class="card shadow">
@@ -512,7 +518,7 @@ html, body { max-width:100%; overflow-x:hidden; }
           Publication → GitHub Pages (accès simple, preuves cliquables)
       </li>
     </ul>
-    <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
+    <a href="#topNav" class="backMenu" data-fr="↑ Retour au menu" data-en="↑ Back to menu">↑ Retour au menu</a>
   </div>
 
   <!-- Colonne droite : Compétences acquises -->
@@ -715,7 +721,7 @@ html, body { max-width:100%; overflow-x:hidden; }
           data-en="Availability: Start date possible with a 3-month notice period.">
           <b>Disponibilité :</b> Prise de poste possible avec <b>3 mois de préavis</b>.<br>
         </p>
-         <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
+        <a href="#topNav" class="backMenu" data-fr="↑ Retour au menu" data-en="↑ Back to menu">↑ Retour au menu</a>
       </div>
 
       <div class="card shadow">
