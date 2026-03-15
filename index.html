@@ -45,17 +45,57 @@
       font-size:12px;color:var(--muted);font-weight:700;margin:6px 6px 0 0}
 
 
-/* === NAV  === */
-.navInner { gap:14px; }
+/* =========================
+   NAV (non figé) + layout propre
+   ========================= */
+.nav{
+  position:static;                 /* menu non figé */
+  background:rgba(246,248,251,.9);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--border);
+}
+
+.navInner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:10px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;                  /* évite le débordement */
+}
+
+.navBrand{
+  font-weight:900;
+  color:var(--navy);
+  font-size:14px;
+  white-space:nowrap;
+}
+
 .navLinks{
   display:flex;
-  flex-wrap:wrap;           /* ← autorise le retour à la ligne */
-  gap:8px;
-  justify-content:flex-end;
   align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;                  /* évite le scroll horizontal */
 }
-.langWrap{ display:flex; gap:8px; align-items:center; margin-left:6px; }
-.langLabel{ font-weight:800; color:var(--navy); font-size:13px; }
+
+.navLinks a{
+  text-decoration:none;
+  color:var(--navy);
+  font-weight:800;
+  font-size:13px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  white-space:nowrap;
+}
+.navLinks a:hover{ border-color:#C7D2FE; }
+
+.langWrap{ display:inline-flex; gap:8px; align-items:center; margin-left:6px; }
+.langLabel{ font-weight:800; color:var(--navy); font-size:13px; white-space:nowrap; }
 #langSelect{
   padding:8px 10px;
   border-radius:999px;
@@ -64,20 +104,14 @@
   background:#fff;
 }
 
-    .nav{
-  position:static; /* ou supprime carrément la ligne position */
-  top:auto;
-  z-index:20;
-  background:rgba(246,248,251,.9);
-  backdrop-filter: blur(8px);
-  border-bottom:1px solid var(--border);
-}
-
-/* Empêche tout scroll horizontal global */
+/* Empêche le scroll horizontal global */
 html, body { max-width:100%; overflow-x:hidden; }
 
-/* === DROPDOWN robuste (ne disparaît plus) === */
+/* =========================
+   DROPDOWN Compétences (stable)
+   ========================= */
 .dropdown{ position:relative; display:inline-flex; align-items:center; }
+
 .dropbtn{
   display:inline-flex;
   align-items:center;
@@ -104,11 +138,11 @@ html, body { max-width:100%; overflow-x:hidden; }
   border-radius:14px;
   box-shadow:0 12px 28px rgba(16,24,40,.12);
   padding:8px;
-  z-index:9999;            /* ← au-dessus de tout */
-  display:none;            /* ouvert via JS */
+  z-index:9999;
+  display:none; /* ouvert via JS */
 }
 
-/* Zone “tampon” invisible pour éviter la perte du hover entre bouton et menu */
+/* zone “tampon” pour éviter que ça se ferme en passant la souris */
 .dropdownContent::before{
   content:"";
   position:absolute;
@@ -132,27 +166,10 @@ html, body { max-width:100%; overflow-x:hidden; }
   border-color:#D6E4FF;
 }
 
-/* Mode mobile: le menu prend la largeur */
 @media(max-width:900px){
+  .navInner{ padding:10px 16px; }
   .dropdownContent{ left:0; right:auto; width:100%; min-width:unset; }
 }
-
-/* === LIEN "Retour au menu" en bas des rectangles === */
-.backMenu{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:14px;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px dashed #C7D2FE;
-  background:#F4F7FF;
-  color:var(--navy);
-  font-weight:800;
-  text-decoration:none;
-  font-size:13px;
-}
-.backMenu:hover{ filter:brightness(.98); }
 
   </style>
 </head>
@@ -174,20 +191,20 @@ html, body { max-width:100%; overflow-x:hidden; }
 
       <!-- DROPDOWN -->
       <div class="dropdown" id="skillsMenu">
-        <button type="button" class="dropbtn" aria-haspopup="true" aria-expanded="false">
-          <span data-fr="Compétences" data-en="Skills">Compétences</span>
-          <span class="caret" aria-hidden="true">▾</span>
-        </button>
+  <button type="button" class="dropbtn" aria-haspopup="true" aria-expanded="false">
+    <span data-fr="Compétences" data-en="Skills">Compétences</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button>
 
-        <div class="dropdownContent" role="menu">
-          <a href="#skills-tech" role="menuitem" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
-          <a href="#skills-soft" role="menuitem" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
-          <a href="#experiences" role="menuitem" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
-          <a href="#case-studies" role="menuitem" data-fr="Projets professionnels (Études de cas)" data-en="Professional projects (case studies)">Projets professionnels (Études de cas)</a>
-          <a href="#reflective" role="menuitem" data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</a>
-          <a href="#references" role="menuitem" data-fr="Avis / Références professionnelles" data-en="References">Avis / Références professionnelles</a>
-        </div>
-      </div>
+  <div class="dropdownContent" role="menu">
+    <a href="#skills-tech" role="menuitem" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
+    <a href="#skills-soft" role="menuitem" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
+    <a href="#experiences" role="menuitem" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
+    <a href="#case-studies" role="menuitem" data-fr="Projets professionnels (Études de cas)" data-en="Professional projects (case studies)">Projets professionnels (Études de cas)</a>
+    <a href="#reflective" role="menuitem" data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</a>
+    <a href="#references" role="menuitem" data-fr="Avis / Références professionnelles" data-en="References">Avis / Références professionnelles</a>
+  </div>
+</div>
 
       <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
 
@@ -723,36 +740,40 @@ html, body { max-width:100%; overflow-x:hidden; }
     });
   }
 
-    function setLang(lang) {
-    allTranslatable().forEach(el => {
-      const val = el.dataset[lang];
-      if (val === undefined) return;
+     function setLang(lang) {
+      allTranslatable().forEach(el => {
+        const val = el.dataset[lang];
+        if (val === undefined) return;
 
-      // Si tu veux permettre du HTML dans data-fr/data-en : mets des <br> etc.
-      const hasMarkup = /<[^>]+>/.test(val);
-      if (hasMarkup) el.innerHTML = val;
-      else el.textContent = val;
-    });
+        // Autorise du HTML uniquement si le texte en contient (ex: <b>, <br>)
+        const hasMarkup = /<[^>]+>/.test(val);
+        if (hasMarkup) el.innerHTML = val;
+        else el.textContent = val;
+      });
 
-    document.documentElement.lang = lang;
-    localStorage.setItem("portfolio_lang", lang);
+      document.documentElement.lang = lang;
+      localStorage.setItem("portfolio_lang", lang);
 
-    const sel = document.getElementById("langSelect");
-    if (sel) sel.value = lang;
+      const sel = document.getElementById("langSelect");
+      if (sel) sel.value = lang;
 
-    updateLinksByLang(lang);
-  }
+      updateLinksByLang(lang);
+    }
 
-  // init
-  setLang(initial);
+    // init
+    setLang(initial);
 
-  // change
-  document.getElementById("langSelect")?.addEventListener("change", (e) => {
-    setLang(e.target.value);
-  });
+    // change
+    const langSelect = document.getElementById("langSelect");
+    if (langSelect) {
+      langSelect.addEventListener("change", (e) => setLang(e.target.value));
+    }
+  })();
 </script>
-  <script>
-  // === Dropdown Compétences (ouvre/ferme au clic, stable desktop+mobile) ===
+ <script>
+  // =========================
+  // DROPDOWN Compétences (stable au clic)
+  // =========================
   (function () {
     const menu = document.getElementById("skillsMenu");
     if (!menu) return;
@@ -773,25 +794,28 @@ html, body { max-width:100%; overflow-x:hidden; }
       isOpen ? closeMenu() : openMenu();
     }
 
-    // click bouton
+    // Ouvre/ferme au clic
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
       toggleMenu();
     });
 
-    // ne ferme pas si on clique dans le panneau
+    // Cliquer un item => ferme le menu
+    panel.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => closeMenu());
+    });
+
+    // Ne ferme pas si on clique dans le menu
     panel.addEventListener("click", (e) => e.stopPropagation());
 
-    // ferme au clic extérieur
+    // Clic extérieur => ferme
     document.addEventListener("click", () => closeMenu());
 
-    // ouvre au survol desktop (optionnel mais agréable)
-    menu.addEventListener("mouseenter", () => openMenu());
-    menu.addEventListener("mouseleave", () => closeMenu());
-
-    // ferme au scroll (évite menu qui flotte)
-    window.addEventListener("scroll", () => closeMenu(), { passive: true });
+    // Échap => ferme
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
   })();
 </script>
 </body>
