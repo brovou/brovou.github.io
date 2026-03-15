@@ -44,129 +44,57 @@
     .pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;
       font-size:12px;color:var(--muted);font-weight:700;margin:6px 6px 0 0}
 
-    /* NAV layout fix */
-.navInner{
-  max-width:1100px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 28px;
-}
+       /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(246,248,251,.9);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+    .navInner{
+      max-width:1100px; margin:0 auto;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:10px 28px;
+    }
+    .navBrand{font-weight:900;color:var(--navy);font-size:14px}
+    .navLinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;align-items:center}
+    .navLinks a{
+      text-decoration:none; color:var(--navy);
+      font-weight:800; font-size:13px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border); background:#fff;
+      white-space:nowrap;
+    }
+    .navLinks a:hover{border-color:#C7D2FE}
+    select{background:#fff}
 
-.navBrand{
+    /* ===== Dropdown (Compétences) : stable (click + hover) ===== */
+.dropdown{position:relative; display:inline-flex; align-items:center}
+.dropbtn{display:inline-flex; align-items:center; cursor:pointer}
+.dropbtn::after{
+  content:"▾";
+  margin-left:6px;
+  font-size:12px;
+  color:var(--muted);
   font-weight:900;
-  color:var(--navy);
-  font-size:14px;
-  white-space:nowrap;     /* empêche le retour à la ligne */
-  flex:0 0 auto;
 }
 
-/* Tout ce qui est à droite (menu + langue) */
-.navRight{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:10px;
-  flex:1 1 auto;
-  min-width:0;
-}
-
-/* Liens */
-.navLinks{
-  display:flex;
-  flex-wrap:nowrap;       /* empêche le menu de casser sur 2 lignes */
-  gap:8px;
-  align-items:center;
-  overflow-x:auto;        /* si écran trop petit → scroll horizontal */
-  scrollbar-width:thin;
-  -webkit-overflow-scrolling:touch;
-}
-
-.navLinks a{
-  text-decoration:none;
-  color:var(--navy);
-  font-weight:800;
-  font-size:13px;
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:#fff;
-  white-space:nowrap;
-  flex:0 0 auto;
-}
-
-/* Langue (toujours sur la même ligne) */
-.langBox{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex:0 0 auto;
-  white-space:nowrap;
-}
-
-.langLabel{
-  font-weight:800;
-  color:var(--navy);
-  font-size:13px;
-}
-
-#langSelect{
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  font-weight:800;
-  background:#fff;
-}
-
-/* Responsive: on autorise un wrap propre sur mobile */
-@media (max-width:900px){
-  .navInner{padding:10px 16px}
-  .navRight{gap:8px}
-  .navLinks{flex-wrap:nowrap}
-}
-
-/* === DROPDOWN robuste (ne disparaît plus) === */
-.dropdown{ position:relative; display:inline-flex; align-items:center; }
-.dropbtn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  cursor:pointer;
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-weight:800;
-  font-size:13px;
-  color:var(--navy);
-}
-.dropbtn:hover{ border-color:#C7D2FE; }
-.caret{ font-size:12px; color:var(--muted); font-weight:900; }
-
+/* menu */
 .dropdownContent{
+  display:none;
   position:absolute;
-  top:46px;
+  top:44px;
   right:0;
-  min-width:300px;
+  min-width:280px;
   background:#fff;
   border:1px solid var(--border);
   border-radius:14px;
   box-shadow:0 12px 28px rgba(16,24,40,.12);
   padding:8px;
-  z-index:9999;            /* ← au-dessus de tout */
-  display:none;            /* ouvert via JS */
+  z-index:9999;
 }
 
-/* Zone “tampon” invisible pour éviter la perte du hover entre bouton et menu */
-.dropdownContent::before{
-  content:"";
-  position:absolute;
-  top:-10px; left:0; right:0;
-  height:10px;
-}
-
+/* liens */
 .dropdownContent a{
   display:block;
   padding:10px 12px;
@@ -183,12 +111,27 @@
   border-color:#D6E4FF;
 }
 
-/* Mode mobile: le menu prend la largeur */
-@media(max-width:900px){
-  .dropdownContent{ left:0; right:auto; width:100%; min-width:unset; }
+/* Hover (optionnel) */
+.dropdown:hover .dropdownContent{display:block}
+
+/* Click (prioritaire) */
+.dropdown.open .dropdownContent{display:block}
+
+/* Zone "tampon" invisible pour éviter fermeture quand on descend */
+.dropdownContent::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-10px;
+  height:10px;
 }
 
-/* === LIEN "Retour au menu" en bas des rectangles === */
+/* Mobile */
+@media(max-width:900px){
+  .dropdownContent{left:0; right:auto; width:100%; min-width:unset;}
+}
+
+    /* === LIEN "Retour au menu" en bas des rectangles === */
 .backMenu{
   display:inline-flex;
   align-items:center;
@@ -199,82 +142,49 @@
   border:1px dashed #C7D2FE;
   background:#F4F7FF;
   color:var(--navy);
-  font-weight:800;
+  font-weight:700;
   text-decoration:none;
-  font-size:13px;
+  font-size:12px;
+  text-align: right;
 }
-.backMenu:hover{ filter:brightness(.98); }
-    /* === NAV FIX (évite l'affichage "bizarre" + pas de scroll horizontal) === */
-.navInner { gap:14px; }
-.navLinks{
-  display:flex;
-  flex-wrap:wrap;           /* ← autorise le retour à la ligne */
-  gap:8px;
-  justify-content:flex-end;
-  align-items:center;
-}
-.langWrap{ display:flex; gap:8px; align-items:center; margin-left:6px; }
-.langLabel{ font-weight:800; color:var(--navy); font-size:13px; }
-#langSelect{
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  font-weight:800;
-  background:#fff;
-}
-
-/* Empêche tout scroll horizontal global */
-html, body { max-width:100%; overflow-x:hidden; }
-
   </style>
 </head>
 
 <body>
   <!-- MENU -->
-<!-- MENU -->
-<div class="nav" id="topNav">
-  <div class="navInner">
-    <div class="navBrand" data-fr="Bruno Brovou — Portfolio" data-en="Bruno Brovou — Portfolio">
-      Bruno Brovou — Portfolio
-    </div>
+<div class="nav">
+    <div class="navInner">
+      <div class="navBrand" data-fr="Bruno Brovou — Portfolio" data-en="Bruno Brovou — Portfolio">Bruno Brovou — Portfolio</div>
 
-    <div class="navLinks" id="mainNav">
-      <a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a>
-      <a href="#apropos" data-fr="À propos" data-en="About">À propos</a>
-      <a href="#aeroworld" data-fr="Aéroworld Corporate" data-en="Aeroworld Corporate">Aéroworld Corporate</a>
-      <a href="#demande" data-fr="Demande" data-en="Client Request">Demande</a>
-      <a href="#livrables" data-fr="Livrables" data-en="Deliverables">Livrables</a>
+      <div class="navLinks">
+        <a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="#aeroworld" data-fr="Aéroworld Corporate" data-en="Aeroworld Corporate">Aéroworld Corporate</a>
+        <a href="#demande" data-fr="Demande" data-en="Client Request">Demande</a>
+        <a href="#livrables" data-fr="Livrables" data-en="Deliverables">Livrables</a>
+        <div class="dropdown" id="skillsMenu">
+  <a href="#competences" class="dropbtn" data-fr="Compétences" data-en="Skills">Compétences</a>
 
-      <!-- DROPDOWN -->
-      <div class="dropdown" id="skillsMenu">
-        <button type="button" class="dropbtn" aria-haspopup="true" aria-expanded="false">
-          <span data-fr="Compétences" data-en="Skills">Compétences</span>
-          <span class="caret" aria-hidden="true">▾</span>
-        </button>
-
-        <div class="dropdownContent" role="menu">
-          <a href="#skills-tech" role="menuitem" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
-          <a href="#skills-soft" role="menuitem" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
-          <a href="#experiences" role="menuitem" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
-          <a href="#case-studies" role="menuitem" data-fr="Projets professionnels (Études de cas)" data-en="Professional projects (case studies)">Projets professionnels (Études de cas)</a>
-          <a href="#reflective" role="menuitem" data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</a>
-          <a href="#references" role="menuitem" data-fr="Avis / Références professionnelles" data-en="References">Avis / Références professionnelles</a>
-        </div>
-      </div>
-
-      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
-
-      <!-- LANG -->
-      <div class="langWrap">
-        <span class="langLabel" data-fr="Langue" data-en="Language">Langue</span>
-        <select id="langSelect">
-          <option value="fr">Français</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-    </div>
-  </div>
+  <div class="dropdownContent">
+    <a href="#skills-tech" data-fr="Compétences techniques" data-en="Hard skills">Compétences techniques</a>
+    <a href="#skills-soft" data-fr="Compétences Générales" data-en="Soft skills">Compétences Générales</a>
+    <a href="#experiences" data-fr="Expériences professionnelles" data-en="Professional experience">Expériences professionnelles</a>
+    <a href="#case-studies" data-fr="Projets professionnels (Études de cas)" data-en="Professional projects (case studies)">Projets professionnels (Études de cas)</a>
+    <a href="#reflective" data-fr="Analyse réflexive" data-en="Reflective analysis">Analyse réflexive</a>
+    <a href="#references" data-fr="Avis / Références professionnelles" data-en="References">Avis / Références professionnelles</a>
+  </div>
 </div>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+
+        <div style="display:flex; gap:8px; align-items:center; margin-left:6px;">
+          <span style="font-weight:800;color:var(--navy);font-size:13px;" data-fr="Langue" data-en="Language">Langue</span>
+          <select id="langSelect" style="padding:8px 10px;border-radius:999px;border:1px solid var(--border);font-weight:800;">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
 
@@ -395,6 +305,7 @@ html, body { max-width:100%; overflow-x:hidden; }
         <span class="pill" data-fr="Sécurité • Fiabilité • Performance" data-en="Safety • Reliability • Performance">Sécurité • Fiabilité • Performance</span>
         <span class="pill" data-fr="Conformité • Traçabilité" data-en="Compliance • Traceability">Conformité • Traçabilité</span>
         <span class="pill" data-fr="Gouvernance KPI" data-en="KPI Governance">Gouvernance KPI</span>
+        <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
       </div>
 
       <div class="card shadow">
@@ -447,6 +358,7 @@ html, body { max-width:100%; overflow-x:hidden; }
            data-en="Work performed: Scoping, KPI definition, data rules, prioritization, and an evidence-based approach.">
           <b>Activités menées :</b> Cadrage, définition des KPI, règles de données, priorisation et logique de preuve.
         </p>
+        <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
       </div>
 
       <div class="card shadow">
@@ -551,6 +463,7 @@ html, body { max-width:100%; overflow-x:hidden; }
           Publication → GitHub Pages (accès simple, preuves cliquables)
       </li>
     </ul>
+    <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
   </div>
 
   <!-- Colonne droite : Compétences acquises -->
@@ -725,7 +638,7 @@ html, body { max-width:100%; overflow-x:hidden; }
       <h2 data-fr="Avis / Références professionnelles" data-en="Professional references">Avis / Références professionnelles</h2>
       <ul class="links"> <li><a href="https://brovou.github.io/Evaluation.pdf" target="_blank" rel="noopener" data-fr="Evaluation (PDF)" data-en="Evaluation (PDF)"> Evaluation (PDF) </a></li> </ul>
     </div>
-
+<a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
   </div>
 
   <!-- Colonne droite -->
@@ -749,15 +662,11 @@ html, body { max-width:100%; overflow-x:hidden; }
       <div class="card shadow">
         <h2 data-fr="Contacts" data-en="Contact">Contacts</h2>
         <p
-          data-fr="Disponibilité : Prise de poste possible avec 3 mois de préavis. 
-          Engagement : Motivé pour contribuer rapidement au pilotage KPI, à la data quality et à l’innovation, avec des livrables fiables, actionnables et transférables."
-          data-en="Availability: Start date possible with a 3-month notice period.  
-          Commitment: Motivated to contribute quickly to KPI steering, data quality, and innovation, delivering reliable, actionable, and transferable outputs.">
+          data-fr="Disponibilité : Prise de poste possible avec 3 mois de préavis."
+          data-en="Availability: Start date possible with a 3-month notice period.">
           <b>Disponibilité :</b> Prise de poste possible avec <b>3 mois de préavis</b>.<br>
-           
         </p>
-        <p class="small" data-fr="© Bruno Brovou — Portfolio Data" data-en="© Bruno Brovou — Data Portfolio">© Bruno Brovou — Portfolio Data</p>
-        <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
+         <a class="backMenu" href="#topNav" data-fr="↥ Retour au menu" data-en="↥ Back to menu">↥ Retour au menu</a>
       </div>
 
       <div class="card shadow">
@@ -767,7 +676,7 @@ html, body { max-width:100%; overflow-x:hidden; }
           <li><a href="https://www.linkedin.com/in/bruno-brovou-645a12385/" target="_blank" rel="noopener"
                  data-fr="LinkedIn" data-en="LinkedIn">LinkedIn</a></li>
         </ul>
-       
+       <p class="small" data-fr="© Bruno Brovou — Portfolio Data" data-en="© Bruno Brovou — Data Portfolio">© Bruno Brovou — Portfolio Data</p>
       </div>
     </div>
 
@@ -776,127 +685,84 @@ html, body { max-width:100%; overflow-x:hidden; }
   <!-- LANG SWITCH -->
   <!-- LANG SWITCH + CV SWITCH -->
 <script>
- const DEFAULT_LANG = "fr";
-  const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
-  const saved = localStorage.getItem("portfolio_lang");
-  const initial = saved || browserLang || DEFAULT_LANG;
-  
-  const CV_Brovou_Bruno_Fr = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
-  const CV_Brovou_Bruno_En = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
+ const DEFAULT_LANG = "fr";
+  const browserLang = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+  const saved = localStorage.getItem("portfolio_lang");
+  const initial = saved || browserLang || DEFAULT_LANG;
+  
+  const CV_Brovou_Bruno_Fr = "https://brovou.github.io/CV_Brovou_Bruno_Fr.pdf";
+  const CV_Brovou_Bruno_En = "https://brovou.github.io/CV_Brovou_Bruno_En.pdf";  
 
-  const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
+  const allTranslatable = () => document.querySelectorAll("[data-fr][data-en]");
 
-  function updateLinksByLang(lang) {
-    // 1) CV
-    const cv = document.getElementById("cvBtn");
-    if (cv) cv.href = (lang === "en") ? CV_Brovou_Bruno_En : CV_Brovou_Bruno_Fr;
+  function updateLinksByLang(lang) {
+    // 1) CV
+    const cv = document.getElementById("cvBtn");
+    if (cv) cv.href = (lang === "en") ? CV_Brovou_Bruno_En : CV_Brovou_Bruno_Fr;
 
-    /// Liens FR/EN
-    document.querySelectorAll("a.langlink").forEach(a => {
-      const frHref = a.getAttribute("data-fr-href");
-      const enHref = a.getAttribute("data-en-href");
-      if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
-    });
-  }
+    /// Liens FR/EN
+    document.querySelectorAll("a.langlink").forEach(a => {
+      const frHref = a.getAttribute("data-fr-href");
+      const enHref = a.getAttribute("data-en-href");
+      if (frHref && enHref) a.href = (lang === "en") ? enHref : frHref;
+    });
+  }
 
-    function setLang(lang) {
-    allTranslatable().forEach(el => {
-      const val = el.dataset[lang];
-      if (val === undefined) return;
+    function setLang(lang) {
+    allTranslatable().forEach(el => {
+      const val = el.dataset[lang];
+      if (val === undefined) return;
 
-      // Si tu veux permettre du HTML dans data-fr/data-en : mets des <br> etc.
-      const hasMarkup = /<[^>]+>/.test(val);
-      if (hasMarkup) el.innerHTML = val;
-      else el.textContent = val;
-    });
+      // Si tu veux permettre du HTML dans data-fr/data-en : mets des <br> etc.
+      const hasMarkup = /<[^>]+>/.test(val);
+      if (hasMarkup) el.innerHTML = val;
+      else el.textContent = val;
+    });
 
-    document.documentElement.lang = lang;
-    localStorage.setItem("portfolio_lang", lang);
+    document.documentElement.lang = lang;
+    localStorage.setItem("portfolio_lang", lang);
 
-    const sel = document.getElementById("langSelect");
-    if (sel) sel.value = lang;
+    const sel = document.getElementById("langSelect");
+    if (sel) sel.value = lang;
 
-    updateLinksByLang(lang);
-  }
+    updateLinksByLang(lang);
+  }
 
-  // init
-  setLang(initial);
+  // init
+  setLang(initial);
 
-  // change
-  document.getElementById("langSelect")?.addEventListener("change", (e) => {
-    setLang(e.target.value);
-  });
+  // change
+  document.getElementById("langSelect")?.addEventListener("change", (e) => {
+    setLang(e.target.value);
+  });
 </script>
-  <script>
-  // ===== Dropdown stable au clic =====
-  (function(){
-    const menu = document.getElementById("skillsMenu");
-    if(!menu) return;
+  <script>
+  // ===== Dropdown stable au clic =====
+  (function(){
+    const menu = document.getElementById("skillsMenu");
+    if(!menu) return;
 
-    const btn = menu.querySelector(".dropbtn");
-    const panel = menu.querySelector(".dropdownContent");
+    const btn = menu.querySelector(".dropbtn");
+    const panel = menu.querySelector(".dropdownContent");
 
-    // Ouvrir/fermer au clic sur "Compétences"
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();       // évite le jump immédiat vers #competences
-      e.stopPropagation();
-      menu.classList.toggle("open");
-    });
+    // Ouvrir/fermer au clic sur "Compétences"
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();       // évite le jump immédiat vers #competences
+      e.stopPropagation();
+      menu.classList.toggle("open");
+    });
 
-    // Cliquer dans le menu ne ferme pas
-    panel.addEventListener("click", (e) => e.stopPropagation());
+    // Cliquer dans le menu ne ferme pas
+    panel.addEventListener("click", (e) => e.stopPropagation());
 
-    // Cliquer ailleurs ferme
-    document.addEventListener("click", () => menu.classList.remove("open"));
+    // Cliquer ailleurs ferme
+    document.addEventListener("click", () => menu.classList.remove("open"));
 
-    // ESC ferme
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") menu.classList.remove("open");
-    });
-  })();
-</script>
-  <script>
-  // === Dropdown Compétences (ouvre/ferme au clic, stable desktop+mobile) ===
-  (function () {
-    const menu = document.getElementById("skillsMenu");
-    if (!menu) return;
-
-    const btn = menu.querySelector(".dropbtn");
-    const panel = menu.querySelector(".dropdownContent");
-
-    function openMenu() {
-      panel.style.display = "block";
-      btn.setAttribute("aria-expanded", "true");
-    }
-    function closeMenu() {
-      panel.style.display = "none";
-      btn.setAttribute("aria-expanded", "false");
-    }
-    function toggleMenu() {
-      const isOpen = panel.style.display === "block";
-      isOpen ? closeMenu() : openMenu();
-    }
-
-    // click bouton
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    // ne ferme pas si on clique dans le panneau
-    panel.addEventListener("click", (e) => e.stopPropagation());
-
-    // ferme au clic extérieur
-    document.addEventListener("click", () => closeMenu());
-
-    // ouvre au survol desktop (optionnel mais agréable)
-    menu.addEventListener("mouseenter", () => openMenu());
-    menu.addEventListener("mouseleave", () => closeMenu());
-
-    // ferme au scroll (évite menu qui flotte)
-    window.addEventListener("scroll", () => closeMenu(), { passive: true });
-  })();
+    // ESC ferme
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") menu.classList.remove("open");
+    });
+  })();
 </script>
 </body>
 </html>
